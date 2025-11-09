@@ -49,3 +49,23 @@ step 4: stack red on-top-of green
 ```
 
 ### Fine-tuning
+
+We use [Modal](https://modal.com/) + [Axolotl](https://github.com/axolotl-ai-cloud/axolotl) for serverless GPU training.
+
+**Setup:**
+
+1. Install: `uv add modal fastapi`
+2. Auth: `uv run modal setup`
+3. Configure secrets in Modal dashboard:
+   - `huggingface-secret` (HF token with Llama-2 access)
+   - `wandb-secret` (optional, for training logs)
+
+**Train:**
+
+```bash
+ALLOW_WANDB=true uv run modal run -m src.train \
+  --config=config/llama2-blocksworld.yml \
+  --data=data/blocksworld_train.jsonl
+```
+
+Models are saved to Modal volumes at `/runs/axo-{timestamp}/`.
