@@ -245,6 +245,32 @@ def save_as_text(examples: List[Dict[str, Any]], path: str) -> None:
             f.write("\n\n")
 
 
+def save_as_jsonl(examples: List[Dict[str, Any]], path: str) -> None:
+    """Save dataset in JSONL format for fine-tuning."""
+    with open(path, "w", encoding="utf-8") as f:
+        for ex in examples:
+            rule = (
+                "You can pick-up color1. "
+                "You can stack color1 on-top-of color2. "
+                "You can stack color1 on-top-of table."
+            )
+            init_str = "Init state:\n" + stacks_to_str(ex["init_stacks"])
+            goal_str = "Goal state:\n" + stacks_to_str(ex["goal_stacks"])
+
+            input_text = f"Rule:\n{rule}\n\n{init_str}\n\n{goal_str}"
+
+            plan_lines = [action_to_str(i + 1, act) for i, act in enumerate(ex["plan"])]
+            output_text = "Plan:\n" + "\n".join(plan_lines)
+
+            jsonl_entry = {
+                "instruction": "Given the rules, initial state, and goal state, generate an optimal plan to transform the initial state into the goal state.",
+                "input": input_text,
+                "output": output_text,
+            }
+
+            f.write(json.dumps(jsonl_entry) + "\n")
+
+
 if __name__ == "__main__":
     # hyperparams from the paper:
     min_colors = 4
@@ -290,4 +316,8 @@ if __name__ == "__main__":
     save_as_text(ds_L2, "./data/blocksworld_L2.txt")
     save_as_text(ds_L3, "./data/blocksworld_L3.txt")
 
-    print("Saved L1/L2/L3 datasets to ./data/")
+    save_as_jsonl(ds_L1, "./data/blocksworld_L1.jsonl")
+    save_as_jsonl(ds_L2, "./data/blocksworld_L2.jsonl")
+    save_as_jsonl(ds_L3, "./data/blocksworld_L3.jsonl")
+
+    print("Saved L1/L2/L3 datasets to ./data/ (both .txt and .jsonl formats)")
