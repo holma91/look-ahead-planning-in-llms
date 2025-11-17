@@ -1,0 +1,54 @@
+# Quick test config: 7 L1 examples, 1 epoch
+
+base_model: meta-llama/Llama-2-7b-chat-hf
+sequence_len: 2048
+
+load_in_8bit: false
+flash_attention: true
+
+datasets:
+  - path: data.jsonl
+    ds_type: json
+    type:
+      field_instruction: instruction
+      field_input: input
+      field_output: output
+      format: |-
+        [INST] {instruction}
+
+        {input} [/INST]
+
+special_tokens:
+  bos_token: '<s>'
+  eos_token: '</s>'
+  unk_token: '<unk>'
+
+val_set_size: 0.0
+
+seed: 42
+
+optimizer: adamw_torch
+learning_rate: 0.00005
+lr_scheduler: cosine
+warmup_steps: 5
+gradient_accumulation_steps: 10
+micro_batch_size: 1
+
+dataset_prepared_path: last_run_prepared
+output_dir: ./full-out
+
+logging_steps: 1
+eval_steps: 0
+save_strategy: 'no'
+num_epochs: 1
+
+wandb_project: blocksworld-planning-test
+
+bf16: auto
+fp16: false
+tf32: false
+deepspeed: /workspace/axolotl/deepspeed_configs/zero3_bf16.json
+gradient_checkpointing: true
+
+strict: false
+local_rank:

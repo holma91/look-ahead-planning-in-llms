@@ -60,28 +60,43 @@ We use [Modal](https://modal.com/) + [Axolotl](https://github.com/axolotl-ai-clo
    - `huggingface-secret` (HF token with Llama-2 access)
    - `wandb-secret` (optional, for training logs)
 
-**Train:**
+**LoRA Fine-tuning (fast, parameter-efficient):**
 
 ```bash
-# Full training (567 examples, 3 epochs, ~15-20 min)
+# Full LoRA training (567 examples, 3 epochs, ~15-20 min)
 ALLOW_WANDB=true uv run modal run -m src.core.train \
-  --config=config/llama2-blocksworld.yml \
+  --config=config/llama2-lora.yml \
   --data=data/blocksworld_train.jsonl
 
-# Quick test (7 L1 examples, 1 epoch, ~3-5 min)
+# Quick LoRA test (7 L1 examples, 1 epoch, ~3-5 min)
 ALLOW_WANDB=true uv run modal run -m src.core.train \
-  --config=config/llama2-blocksworld-test.yml \
+  --config=config/llama2-lora-test.yml \
+  --data=data/blocksworld_L1_train.jsonl
+```
+
+**Full Fine-tuning (all parameters):**
+
+```bash
+# Full fine-tuning (567 examples, 3 epochs, ~25-35 min)
+ALLOW_WANDB=true uv run modal run -m src.core.train \
+  --config=config/llama2.yml \
+  --data=data/blocksworld_train.jsonl
+
+# Quick test (7 L1 examples, 1 epoch, ~5-8 min)
+ALLOW_WANDB=true uv run modal run -m src.core.train \
+  --config=config/llama2-test.yml \
   --data=data/blocksworld_L1_train.jsonl
 ```
 
 **Configuration:**
 
 - Base model: `meta-llama/Llama-2-7b-chat-hf`
-- Fine-tuning: LoRA (r=16, α=32, dropout=0.05)
-- Training: 3 epochs, LR=2e-4, batch_size=8, 2x A100 GPUs
 - Dataset: 567 examples (482 train, 85 val after 15% split)
+- LoRA: r=16, α=32, dropout=0.05, LR=2e-4, batch_size=8
+- Full (paper): LR=5e-5, global_batch_size=20 (micro=2, grad_accum=10)
+- Hardware: 2x A100 GPUs
 
-Models are saved to Modal volumes at `/runs/axo-{timestamp}/lora-out/`.
+Models saved to Modal volumes at `/runs/axo-{timestamp}/[lora|full]-out/`.
 
 ### Evaluation
 
