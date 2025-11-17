@@ -161,3 +161,25 @@ uv run modal run src.quick_inference_test --run-name axo-2025-11-17-09-14-09-9bf
 ```
 
 Results are saved to `results/` directory as both `.json` (machine-readable) and `.txt` (human-readable) files.
+
+## Fine-tuning Results
+
+Evaluation on L3 test set (1,057 examples, 6-step plans):
+
+| Model                       | Exact Match | Notes                         |
+| --------------------------- | ----------- | ----------------------------- |
+| **Paper (Llama-2-7b-chat)** | 61.0%       | Full fine-tuning, batch=20    |
+| **LoRA (ours)**             | **59.7%**   | r=16, α=32, LR=2e-4, batch=8  |
+| **Full fine-tuning (ours)** | _pending_   | LR=5e-5, batch=20 (corrected) |
+
+**Key findings:**
+
+- LoRA achieved **59.7% accuracy**, only **1.3% below the paper's result**
+- Both models maintain 100% valid plan format (all outputs have proper "Plan:" and "step X:" structure)
+- LoRA training: 93 steps, final train_loss=0.015, ~12 minutes on 2x A100-40GB
+- Full training: 72 steps, final train_loss=0.020, ~20 minutes on 2x A100-80GB
+
+**Training runs:**
+
+- LoRA: `axo-2025-11-17-09-14-09-9bf6` (https://wandb.ai/aicellio/blocksworld-planning/runs/m8d9n9ia?nw=nwuserholma91)
+- Full (corrected): `axo-2025-11-17-12-42-41-3911` (https://wandb.ai/aicellio/blocksworld-planning/runs/cvc2abrx?nw=nwuserholma91)
