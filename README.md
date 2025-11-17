@@ -78,7 +78,7 @@ ALLOW_WANDB=true uv run modal run -m src.core.train \
 
 ```bash
 # Full fine-tuning (567 examples, 3 epochs, ~25-35 min)
-ALLOW_WANDB=true uv run modal run -m src.core.train \
+GPU_CONFIG=a100-80gb:2 ALLOW_WANDB=true uv run modal run -m src.core.train \
   --config=config/llama2.yml \
   --data=data/blocksworld_train.jsonl
 
@@ -98,31 +98,66 @@ ALLOW_WANDB=true uv run modal run -m src.core.train \
 
 Models saved to Modal volumes at `/runs/axo-{timestamp}/[lora|full]-out/`.
 
+**Accessing saved models:**
+
+```bash
+# List all training runs
+uv run modal volume ls example-runs-vol
+
+# View files in a specific run
+uv run modal volume ls example-runs-vol axo-2025-11-17-09-14-09-9bf6
+
+# LoRA adapters are in: /runs/{run-name}/lora-out/
+# Full fine-tuned models are in: /runs/{run-name}/full-out/
+```
+
 ### Evaluation
 
 **Baseline (pre-fine-tuning):**
 
-The following uses https://huggingface.co/meta-llama/Llama-2-7b-chat-hf:
+Uses the base `meta-llama/Llama-2-7b-chat-hf` model (before fine-tuning):
 
 ```bash
+# Evaluate on full L3 test set (1,057 examples)
+uv run modal run src.eval_baseline \
+  --data-file data/blocksworld_L3_test.jsonl
+
+# Quick test on 50 examples
 uv run modal run src.eval_baseline \
   --data-file data/blocksworld_L3_test.jsonl \
   --n-samples 50
 ```
 
-**Fine-tuned model:**
+**Fine-tuned models:**
 
 ```bash
+# Evaluate LoRA model on full L3 test set (1,057 examples)
+uv run modal run src.eval_finetuned \
+  --run-name axo-2025-11-17-09-14-09-9bf6 \
+  --data-file data/blocksworld_L3_test.jsonl \
+  --lora
+
+# Evaluate full fine-tuned model
+uv run modal run src.eval_finetuned \
+  --run-name axo-2025-11-17-09-20-23-e552 \
+  --data-file data/blocksworld_L3_test.jsonl
+
+# Quick test on 50 examples
 uv run modal run src.eval_finetuned \
   --run-name <your-run-name> \
   --data-file data/blocksworld_L3_test.jsonl \
-  --n-samples 50
+  --n-samples 50 \
+  --lora  # include this flag for LoRA models
 ```
 
-**Quick single-example test:**
+**Quick single-example inference test:**
 
 ```bash
-uv run modal run src.quick_test --run-name <your-run-name>
+# Test full fine-tuned model
+uv run modal run src.quick_inference_test --run-name axo-2025-11-17-09-20-23-e552
+
+# Test LoRA model
+uv run modal run src.quick_inference_test --run-name axo-2025-11-17-09-14-09-9bf6 --lora
 ```
 
-Results are saved to `results/` directory.
+Results are saved to `results/` directory as both `.json` (machine-readable) and `.txt` (human-readable) files.

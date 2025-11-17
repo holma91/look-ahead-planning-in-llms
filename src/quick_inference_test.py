@@ -1,9 +1,12 @@
 """
-Quick single-example test for trained LoRA models.
+Quick single-example test for trained models (full fine-tuned or LoRA).
 
 Usage:
-    # Test with default L1 example
-    uv run modal run src.quick_inference_test --run-name axo-2025-11-17-08-26-35-b9fa
+    # Test full fine-tuned model (default)
+    uv run modal run src.quick_inference_test --run-name axo-2025-11-17-09-20-23-e552
+
+    # Test LoRA model
+    uv run modal run src.quick_inference_test --run-name axo-2025-11-17-09-14-09-9bf6 --lora
 
     # Test with custom prompt
     uv run modal run src.quick_inference_test --run-name <run-name> --prompt "your prompt"
@@ -31,7 +34,7 @@ hf_image = modal.Image.debian_slim().pip_install(
     volumes={"/cache": model_cache, "/runs": runs_volume},
     timeout=600,
 )
-def generate_with_lora(run_name: str, prompt: str):
+def generate_with_model(run_name: str, prompt: str, use_lora: bool):
     import os
     from transformers import AutoTokenizer, AutoModelForCausalLM
     from peft import PeftModel
@@ -41,19 +44,40 @@ def generate_with_lora(run_name: str, prompt: str):
     runs_volume.reload()
     os.environ["HF_HOME"] = "/cache"
 
-    base_model_id = "meta-llama/Llama-2-7b-chat-hf"
-    lora_path = f"/runs/{run_name}/lora-out"
+    if use_lora:
+        base_model_id = "meta-llama/Llama-2-7b-chat-hf"
+        lora_path = f"/runs/{run_name}/lora-out"
 
-    print(f"Loading base model: {base_model_id}")
-    tokenizer = AutoTokenizer.from_pretrained(base_model_id)
-    base_model = AutoModelForCausalLM.from_pretrained(
-        base_model_id,
-        torch_dtype=torch.float16,
-        device_map="auto",
-    )
+        print(f"Loading base model: {base_model_id}")
+        tokenizer = AutoTokenizer.from_pretrained(base_model_id)
+        base_model = AutoModelForCausalLM.from_pretrained(
+            base_model_id,
+            torch_dtype=torch.float16,
+            device_map="auto",
+        )
 
-    print(f"Loading LoRA adapter from: {lora_path}")
-    model = PeftModel.from_pretrained(base_model, lora_path)
+        print(f"Loading LoRA adapter from: {lora_path}")
+        model = PeftModel.from_pretrained(base_model, lora_path)
+    else:
+        model_path = f"/runs/{run_name}/full-out"
+
+        import os
+        import glob
+
+        checkpoints = sorted(glob.glob(f"{model_path}/checkpoint-*"))
+        if checkpoints:
+            checkpoint_path = checkpoints[-1]
+            print(f"Loading from checkpoint: {checkpoint_path}")
+            model_path = checkpoint_path
+
+        print(f"Loading full fine-tuned model from: {model_path}")
+        tokenizer = AutoTokenizer.from_pretrained(f"/runs/{run_name}/full-out")
+        model = AutoModelForCausalLM.from_pretrained(
+            model_path,
+            torch_dtype=torch.float16,
+            device_map="auto",
+        )
+
     model.eval()
     model_cache.commit()
 
@@ -84,7 +108,8 @@ def generate_with_lora(run_name: str, prompt: str):
 
 @app.local_entrypoint()
 def main(
-    run_name: str = "axo-2025-11-17-08-26-35-b9fa",
+    run_name: str = "axo-2025-11-17-09-20-23-e552",
+    lora: bool = False,
     prompt: str = "",
 ):
     if not prompt:
@@ -101,6 +126,7 @@ Goal state:
 <red on blue on yellow>
 <green> [/INST]"""
 
-    print(f"🧪 Quick test: {run_name}\n")
-    response = generate_with_lora.remote(run_name, prompt)
+    model_type = "LoRA" if lora else "Full fine-tuned"
+    print(f"🧪 Quick test: {run_name} ({model_type})\n")
+    response = generate_with_model.remote(run_name, prompt, lora)
     print(f"✅ Complete!")
