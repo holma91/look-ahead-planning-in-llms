@@ -6,5 +6,6 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.121.1",
+    "llama-stack>=0.3.2",
     "modal>=1.2.1",
 ]

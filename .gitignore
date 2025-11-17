@@ -9,6 +9,8 @@ wheels/
 # Virtual environments
 .venv
 
+# Results and outputs
+results/
 
 # inspiration
 llm-finetuning/
