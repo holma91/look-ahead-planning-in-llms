@@ -11,7 +11,6 @@ import modal
 
 app = modal.App("blocksworld-baseline-eval")
 
-# Cache for HuggingFace models
 model_cache = modal.Volume.from_name("huggingface-cache", create_if_missing=True)
 
 hf_image = modal.Image.debian_slim().pip_install(
@@ -26,10 +25,9 @@ hf_image = modal.Image.debian_slim().pip_install(
     gpu="a10g",
     secrets=[modal.Secret.from_name("huggingface-secret")],
     volumes={"/cache": model_cache},
-    timeout=1800,  # 30 minutes for batch processing
+    timeout=1800,
 )
 def generate_batch(examples: list[dict]) -> list[dict]:
-    """Generate predictions for a batch of examples."""
     import os
     from transformers import AutoTokenizer, AutoModelForCausalLM
     import torch
@@ -55,14 +53,11 @@ def generate_batch(examples: list[dict]) -> list[dict]:
     for i, example in enumerate(examples):
         print(f"Processing example {i+1}/{len(examples)}...")
 
-        # Format prompt (same as fine-tuning format)
         prompt = f"{example['instruction']}\n\n{example['input']}\n\nPlan:"
-
-        # Generate
         inputs = tokenizer(prompt, return_tensors="pt").to("cuda")
         outputs = model.generate(
             **inputs,
-            max_new_tokens=512,  # Longer for multi-step plans
+            max_new_tokens=512,
             temperature=0.7,
             do_sample=True,
             top_p=0.9,
@@ -70,7 +65,6 @@ def generate_batch(examples: list[dict]) -> list[dict]:
         )
 
         prediction = tokenizer.decode(outputs[0], skip_special_tokens=True)
-        # Remove the input prompt from prediction
         prediction = prediction[len(prompt) :].strip()
 
         results.append(
@@ -86,7 +80,6 @@ def generate_batch(examples: list[dict]) -> list[dict]:
 
 
 def load_test_data(filepath: str, n_samples: int = None) -> list[dict]:
-    """Load test examples from JSONL file."""
     examples = []
     with open(filepath, "r") as f:
         for line in f:
@@ -97,7 +90,6 @@ def load_test_data(filepath: str, n_samples: int = None) -> list[dict]:
 
 
 def calculate_metrics(results: list[dict]) -> dict:
-    """Calculate evaluation metrics."""
     exact_matches = 0
     has_plan_prefix = 0
     has_steps = 0
@@ -106,15 +98,12 @@ def calculate_metrics(results: list[dict]) -> dict:
         expected = result["expected"].strip()
         predicted = result["predicted"].strip()
 
-        # Exact match
         if expected == predicted:
             exact_matches += 1
 
-        # Has "Plan:" or "step" in output (format correctness)
         if "Plan:" in predicted or "step" in predicted.lower():
             has_plan_prefix += 1
 
-        # Has numbered steps
         if "step 1:" in predicted.lower():
             has_steps += 1
 
@@ -160,7 +149,6 @@ def main(
     print(f"Has steps: {metrics['has_steps']:.1%}")
     print("=" * 60)
 
-    # Save results
     output_path = Path(output_file)
     output_path.parent.mkdir(exist_ok=True)
 

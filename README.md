@@ -63,9 +63,51 @@ We use [Modal](https://modal.com/) + [Axolotl](https://github.com/axolotl-ai-clo
 **Train:**
 
 ```bash
-ALLOW_WANDB=true uv run modal run -m src.train \
+# Full training (567 examples, 3 epochs, ~15-20 min)
+ALLOW_WANDB=true uv run modal run -m src.core.train \
   --config=config/llama2-blocksworld.yml \
   --data=data/blocksworld_train.jsonl
+
+# Quick test (7 L1 examples, 1 epoch, ~3-5 min)
+ALLOW_WANDB=true uv run modal run -m src.core.train \
+  --config=config/llama2-blocksworld-test.yml \
+  --data=data/blocksworld_L1_train.jsonl
 ```
 
-Models are saved to Modal volumes at `/runs/axo-{timestamp}/`.
+**Configuration:**
+
+- Base model: `meta-llama/Llama-2-7b-chat-hf`
+- Fine-tuning: LoRA (r=16, α=32, dropout=0.05)
+- Training: 3 epochs, LR=2e-4, batch_size=8, 2x A100 GPUs
+- Dataset: 567 examples (482 train, 85 val after 15% split)
+
+Models are saved to Modal volumes at `/runs/axo-{timestamp}/lora-out/`.
+
+### Evaluation
+
+**Baseline (pre-fine-tuning):**
+
+The following uses https://huggingface.co/meta-llama/Llama-2-7b-chat-hf:
+
+```bash
+uv run modal run src.eval_baseline \
+  --data-file data/blocksworld_L3_test.jsonl \
+  --n-samples 50
+```
+
+**Fine-tuned model:**
+
+```bash
+uv run modal run src.eval_finetuned \
+  --run-name <your-run-name> \
+  --data-file data/blocksworld_L3_test.jsonl \
+  --n-samples 50
+```
+
+**Quick single-example test:**
+
+```bash
+uv run modal run src.quick_test --run-name <your-run-name>
+```
+
+Results are saved to `results/` directory.
