@@ -1,6 +1,6 @@
 """
-Baseline evaluation script for Llama-2-7b (no fine-tuning).
-Runs inference on Blocksworld test data to establish baseline metrics.
+Baseline evaluation script for Llama-2-7b-chat-hf (instruction-tuned, no fine-tuning on Blocksworld).
+Runs inference on Blocksworld test data to establish baseline metrics before task-specific fine-tuning.
 """
 
 import json
@@ -37,7 +37,9 @@ def generate_batch(examples: list[dict]) -> list[dict]:
     model_cache.reload()
     os.environ["HF_HOME"] = "/cache"
 
-    model_id = "meta-llama/Llama-2-7b-hf"
+    model_id = (
+        "meta-llama/Llama-2-7b-chat-hf"  # Instruction-tuned version (same as paper)
+    )
 
     print(f"Loading model {model_id}...")
     tokenizer = AutoTokenizer.from_pretrained(model_id)
@@ -129,7 +131,7 @@ def calculate_metrics(results: list[dict]) -> dict:
 def main(
     data_file: str = "data/blocksworld_L3.jsonl",
     n_samples: int = 20,
-    output_file: str = "results/baseline_llama2_7b.json",
+    output_file: str = "results/baseline_llama2_7b_chat.json",
 ):
     """
     Run baseline evaluation.
@@ -143,7 +145,7 @@ def main(
     examples = load_test_data(data_file, n_samples)
     print(f"Loaded {len(examples)} examples")
 
-    print(f"\nRunning inference on base Llama-2-7b...")
+    print(f"\nRunning inference on Llama-2-7b-chat-hf (pre-fine-tuning baseline)...")
     results = generate_batch.remote(examples)
 
     print(f"\nCalculating metrics...")

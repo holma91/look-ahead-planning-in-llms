@@ -1,0 +1,8104 @@
+### Example 1
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on blue>
+<yellow>
+<red>
+
+Goal state:
+<yellow>
+<red>
+<blue on green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 2
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on blue>
+<green>
+<white on red>
+
+Goal state:
+<green on blue>
+<yellow on white on red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of white
+step 3: pick-up green
+step 4: stack green on-top-of blue
+
+
+### Example 3
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on red>
+<green>
+<yellow>
+
+Goal state:
+<yellow on green on blue on red>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of blue
+step 3: pick-up yellow
+step 4: stack yellow on-top-of green
+
+
+### Example 4
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on white on blue>
+<red on green>
+
+Goal state:
+<green on red on yellow on white on blue>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of yellow
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 5
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<green on red>
+<blue>
+
+Goal state:
+<blue on yellow on green on red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of green
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 6
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<red on yellow>
+<blue>
+
+Goal state:
+<red on green>
+<blue on yellow>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of green
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 7
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on red>
+<yellow on green>
+
+Goal state:
+<blue on red>
+<green on yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of yellow
+
+
+### Example 8
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<red on green>
+<yellow>
+
+Goal state:
+<blue on green>
+<yellow>
+<red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 9
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on yellow on green>
+<blue>
+
+Goal state:
+<yellow on green>
+<blue on red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 10
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<red>
+<yellow on blue>
+
+Goal state:
+<green on red on yellow on blue>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of yellow
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 11
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on green>
+<yellow on red>
+
+Goal state:
+<green on blue on yellow on red>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of yellow
+step 3: pick-up green
+step 4: stack green on-top-of blue
+
+
+### Example 12
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<blue>
+<red on yellow>
+
+Goal state:
+<yellow on red on green>
+<blue>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of green
+step 3: pick-up yellow
+step 4: stack yellow on-top-of red
+
+
+### Example 13
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on green>
+<yellow on red>
+
+Goal state:
+<blue on green>
+<yellow>
+<red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of table
+
+
+### Example 14
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<green>
+<yellow on red>
+
+Goal state:
+<green>
+<red>
+<yellow>
+<blue>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of table
+
+
+### Example 15
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<white>
+<red on green on yellow>
+
+Goal state:
+<red on blue>
+<white on green on yellow>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of blue
+step 3: pick-up white
+step 4: stack white on-top-of green
+
+
+### Example 16
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<white on red on blue>
+<green on yellow>
+
+Goal state:
+<blue>
+<red on white on green on yellow>
+
+Plan:
+step 1: pick-up white
+step 2: stack white on-top-of green
+step 3: pick-up red
+step 4: stack red on-top-of white
+
+
+### Example 17
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on blue>
+<yellow on red>
+
+Goal state:
+<yellow on red>
+<blue on green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 18
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on red>
+<blue>
+<green>
+
+Goal state:
+<red>
+<blue on yellow on green>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of green
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 19
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<red on green>
+<blue>
+
+Goal state:
+<green on red on yellow>
+<blue>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of yellow
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 20
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<green on yellow>
+<blue>
+
+Goal state:
+<blue on red on green on yellow>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of green
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 21
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on red>
+<blue>
+<green>
+
+Goal state:
+<red>
+<blue on yellow on green>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of green
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 22
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<yellow>
+<red on blue>
+
+Goal state:
+<yellow on green>
+<blue>
+<red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of green
+step 3: pick-up red
+step 4: stack red on-top-of table
+
+
+### Example 23
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<red>
+<blue>
+<yellow>
+
+Goal state:
+<red>
+<yellow on blue>
+<green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 24
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<yellow on blue on red>
+
+Goal state:
+<blue on red>
+<yellow on green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of green
+
+
+### Example 25
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on yellow on white>
+<blue on green>
+
+Goal state:
+<red on yellow on white>
+<blue>
+<green>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of table
+
+
+### Example 26
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<yellow>
+<blue on red>
+
+Goal state:
+<green on yellow on blue on red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of blue
+step 3: pick-up green
+step 4: stack green on-top-of yellow
+
+
+### Example 27
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on yellow on blue>
+<red>
+
+Goal state:
+<blue>
+<yellow on green on red>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of red
+step 3: pick-up yellow
+step 4: stack yellow on-top-of green
+
+
+### Example 28
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<blue>
+<green>
+<yellow>
+
+Goal state:
+<red>
+<green on yellow>
+<blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of yellow
+
+
+### Example 29
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<red on yellow>
+<white on green>
+
+Goal state:
+<blue on yellow>
+<red on white on green>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of white
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 30
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<blue on red on green>
+
+Goal state:
+<red on blue on yellow>
+<green>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of yellow
+step 3: pick-up red
+step 4: stack red on-top-of blue
+
+
+### Example 31
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<black on white on blue on green>
+<red>
+<yellow>
+
+Goal state:
+<white on blue on green>
+<red on black on yellow>
+
+Plan:
+step 1: pick-up black
+step 2: stack black on-top-of yellow
+step 3: pick-up red
+step 4: stack red on-top-of black
+
+
+### Example 32
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<blue>
+<red on green>
+
+Goal state:
+<yellow>
+<blue>
+<green on red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 33
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on blue>
+<green on red>
+
+Goal state:
+<yellow on green on red>
+<blue>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of green
+step 3: pick-up blue
+step 4: stack blue on-top-of table
+
+
+### Example 34
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on green>
+<yellow on red>
+
+Goal state:
+<green on blue on yellow on red>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of yellow
+step 3: pick-up green
+step 4: stack green on-top-of blue
+
+
+### Example 35
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on red>
+<green>
+<blue>
+
+Goal state:
+<green on red>
+<blue>
+<yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 36
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<blue on yellow>
+<green>
+
+Goal state:
+<yellow>
+<green>
+<red on blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of blue
+
+
+### Example 37
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<green on red on yellow>
+
+Goal state:
+<red on yellow>
+<blue>
+<green>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of table
+
+
+### Example 38
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<blue on yellow>
+<red>
+
+Goal state:
+<yellow>
+<green on red>
+<blue>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of red
+step 3: pick-up blue
+step 4: stack blue on-top-of table
+
+
+### Example 39
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on blue on yellow on red>
+
+Goal state:
+<yellow on red>
+<green>
+<blue>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of table
+
+
+### Example 40
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<yellow on red>
+<blue>
+
+Goal state:
+<red>
+<blue>
+<yellow on green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of green
+
+
+### Example 41
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<yellow>
+<green>
+<red>
+
+Goal state:
+<green on blue>
+<yellow on red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of red
+step 3: pick-up green
+step 4: stack green on-top-of blue
+
+
+### Example 42
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on green>
+<blue on red>
+
+Goal state:
+<blue on red>
+<yellow>
+<green>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of table
+
+
+### Example 43
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<blue>
+<yellow on red>
+
+Goal state:
+<green on blue on yellow on red>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of yellow
+step 3: pick-up green
+step 4: stack green on-top-of blue
+
+
+### Example 44
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on blue>
+<green on red>
+<white>
+
+Goal state:
+<blue>
+<red>
+<green on white>
+<yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of white
+
+
+### Example 45
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on blue>
+<red on green>
+
+Goal state:
+<blue on yellow on red on green>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of red
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 46
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<blue on red>
+<yellow>
+
+Goal state:
+<blue on green>
+<yellow on red>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of green
+step 3: pick-up yellow
+step 4: stack yellow on-top-of red
+
+
+### Example 47
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<green>
+<red on blue>
+
+Goal state:
+<yellow on green>
+<blue>
+<red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of green
+step 3: pick-up red
+step 4: stack red on-top-of table
+
+
+### Example 48
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<red on green on yellow>
+
+Goal state:
+<green on yellow>
+<blue on red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 49
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on blue>
+<white>
+<red>
+<yellow>
+
+Goal state:
+<yellow on green on blue>
+<white on red>
+
+Plan:
+step 1: pick-up white
+step 2: stack white on-top-of red
+step 3: pick-up yellow
+step 4: stack yellow on-top-of green
+
+
+### Example 50
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<green>
+<red>
+<blue>
+
+Goal state:
+<red on green on yellow>
+<blue>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of yellow
+step 3: pick-up red
+step 4: stack red on-top-of green
+
+
+### Example 51
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<yellow>
+<red on green>
+
+Goal state:
+<yellow on blue on red on green>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of red
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 52
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<yellow>
+<red on green>
+
+Goal state:
+<blue on yellow>
+<green>
+<red>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of yellow
+step 3: pick-up red
+step 4: stack red on-top-of table
+
+
+### Example 53
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<green on red>
+<yellow>
+
+Goal state:
+<blue on red>
+<yellow>
+<green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 54
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<yellow>
+<green>
+<blue>
+
+Goal state:
+<red on yellow>
+<green on blue>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of yellow
+step 3: pick-up green
+step 4: stack green on-top-of blue
+
+
+### Example 55
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on blue>
+<red>
+<green>
+
+Goal state:
+<blue on yellow on red>
+<green>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of red
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 56
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on blue on white>
+<yellow on green>
+
+Goal state:
+<white>
+<yellow on green>
+<red>
+<blue>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of table
+
+
+### Example 57
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<red on green on yellow>
+
+Goal state:
+<green on yellow>
+<blue>
+<red>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of table
+
+
+### Example 58
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<green on red on blue>
+
+Goal state:
+<red on blue>
+<yellow>
+<green>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of table
+
+
+### Example 59
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on blue>
+<yellow>
+<green on white>
+
+Goal state:
+<white on green on red on blue>
+<yellow>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of red
+step 3: pick-up white
+step 4: stack white on-top-of green
+
+
+### Example 60
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on yellow>
+<blue on red>
+
+Goal state:
+<green on blue on red>
+<yellow>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of blue
+step 3: pick-up yellow
+step 4: stack yellow on-top-of table
+
+
+### Example 61
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on blue>
+<green on yellow>
+
+Goal state:
+<yellow on green on red on blue>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of red
+step 3: pick-up yellow
+step 4: stack yellow on-top-of green
+
+
+### Example 62
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<green on red>
+<yellow>
+
+Goal state:
+<blue>
+<yellow>
+<red on green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of green
+
+
+### Example 63
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on red>
+<blue>
+<green>
+
+Goal state:
+<red>
+<yellow on blue on green>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of green
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 64
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<green on red>
+<yellow>
+
+Goal state:
+<blue on red>
+<green on yellow>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of yellow
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 65
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<blue on yellow on red>
+
+Goal state:
+<yellow on red>
+<blue on green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 66
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on red>
+<yellow>
+<blue>
+
+Goal state:
+<red on green on yellow>
+<blue>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of yellow
+step 3: pick-up red
+step 4: stack red on-top-of green
+
+
+### Example 67
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<green on red>
+<yellow>
+
+Goal state:
+<blue>
+<yellow>
+<red on green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of green
+
+
+### Example 68
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on yellow>
+<red>
+<green>
+
+Goal state:
+<yellow on red>
+<blue on green>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of green
+step 3: pick-up yellow
+step 4: stack yellow on-top-of red
+
+
+### Example 69
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<yellow on blue>
+<green>
+
+Goal state:
+<blue>
+<yellow on red on green>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of green
+step 3: pick-up yellow
+step 4: stack yellow on-top-of red
+
+
+### Example 70
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on green>
+<red on blue>
+
+Goal state:
+<blue on red on yellow on green>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of yellow
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 71
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on yellow>
+<blue>
+<green>
+
+Goal state:
+<green on blue on red on yellow>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of red
+step 3: pick-up green
+step 4: stack green on-top-of blue
+
+
+### Example 72
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on blue on green on yellow>
+
+Goal state:
+<green on yellow>
+<blue on red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 73
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<blue>
+<yellow>
+<green>
+
+Goal state:
+<yellow on green on red>
+<blue>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of red
+step 3: pick-up yellow
+step 4: stack yellow on-top-of green
+
+
+### Example 74
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<yellow on blue on red>
+
+Goal state:
+<blue on red>
+<green on yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of yellow
+
+
+### Example 75
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<yellow>
+<red on blue>
+
+Goal state:
+<green>
+<blue>
+<red on yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 76
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on yellow>
+<blue on red>
+
+Goal state:
+<yellow on blue on red>
+<green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 77
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<yellow>
+<green on red>
+
+Goal state:
+<yellow on green on red>
+<blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of green
+
+
+### Example 78
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<blue>
+<green on red>
+
+Goal state:
+<blue on green on red>
+<yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 79
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on yellow>
+<red on green>
+
+Goal state:
+<yellow on blue on red on green>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of red
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 80
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<white on yellow>
+<green on blue>
+<red>
+
+Goal state:
+<yellow>
+<white on red on green on blue>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of green
+step 3: pick-up white
+step 4: stack white on-top-of red
+
+
+### Example 81
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<green>
+<yellow>
+<blue>
+
+Goal state:
+<green on red>
+<yellow on blue>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of red
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 82
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on green>
+<blue>
+<red>
+
+Goal state:
+<green on blue>
+<yellow on red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of red
+step 3: pick-up green
+step 4: stack green on-top-of blue
+
+
+### Example 83
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<white>
+<red on yellow on green on blue>
+
+Goal state:
+<white on yellow on green on blue>
+<red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up white
+step 4: stack white on-top-of yellow
+
+
+### Example 84
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on red>
+<green on blue>
+
+Goal state:
+<green on blue>
+<yellow>
+<red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of table
+
+
+### Example 85
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<blue on yellow on red>
+
+Goal state:
+<yellow on blue on green>
+<red>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of green
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 86
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<blue on green>
+<yellow>
+
+Goal state:
+<green on blue on red>
+<yellow>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of red
+step 3: pick-up green
+step 4: stack green on-top-of blue
+
+
+### Example 87
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<yellow on blue>
+<green>
+
+Goal state:
+<yellow on blue>
+<red>
+<green>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of table
+
+
+### Example 88
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on blue>
+<green on red>
+
+Goal state:
+<blue on green on red>
+<yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 89
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<blue on red on green>
+
+Goal state:
+<red on green>
+<blue on yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 90
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on red>
+<blue on yellow>
+<white>
+
+Goal state:
+<green on red>
+<blue on white>
+<yellow>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of white
+step 3: pick-up yellow
+step 4: stack yellow on-top-of table
+
+
+### Example 91
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<yellow>
+<red on green>
+
+Goal state:
+<red on blue>
+<yellow on green>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of blue
+step 3: pick-up yellow
+step 4: stack yellow on-top-of green
+
+
+### Example 92
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<blue>
+<red on green>
+
+Goal state:
+<green on yellow>
+<blue>
+<red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of yellow
+
+
+### Example 93
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on red>
+<blue>
+<green>
+
+Goal state:
+<red on blue>
+<yellow on green>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of green
+step 3: pick-up red
+step 4: stack red on-top-of blue
+
+
+### Example 94
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<green>
+<red>
+<blue>
+
+Goal state:
+<blue on green>
+<red>
+<yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 95
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<blue on red>
+<green on white>
+
+Goal state:
+<yellow on red>
+<blue on green on white>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of green
+step 3: pick-up yellow
+step 4: stack yellow on-top-of red
+
+
+### Example 96
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<blue>
+<green>
+<yellow>
+
+Goal state:
+<green>
+<blue on yellow>
+<red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 97
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<red>
+<green>
+<blue>
+
+Goal state:
+<blue on yellow on red>
+<green>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of red
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 98
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<green on red>
+<yellow>
+
+Goal state:
+<blue>
+<yellow>
+<green>
+<red>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of table
+
+
+### Example 99
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on yellow>
+<red on blue>
+
+Goal state:
+<blue on green on yellow>
+<red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 100
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<yellow on green on blue>
+
+Goal state:
+<green on blue>
+<red>
+<yellow>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of table
+
+
+### Example 101
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<red>
+<blue on yellow>
+
+Goal state:
+<red on green on blue on yellow>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of blue
+step 3: pick-up red
+step 4: stack red on-top-of green
+
+
+### Example 102
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<red>
+<green on blue>
+
+Goal state:
+<blue on green on yellow>
+<red>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of yellow
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 103
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<red on green>
+<blue>
+
+Goal state:
+<blue on yellow>
+<green>
+<red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 104
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<red on yellow>
+<blue>
+
+Goal state:
+<yellow>
+<blue>
+<green>
+<red>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of table
+
+
+### Example 105
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on green>
+<blue on red>
+
+Goal state:
+<yellow on green>
+<blue>
+<red>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of table
+
+
+### Example 106
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<red on blue>
+<green>
+
+Goal state:
+<green on yellow on red on blue>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of red
+step 3: pick-up green
+step 4: stack green on-top-of yellow
+
+
+### Example 107
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on yellow>
+<red>
+<green>
+
+Goal state:
+<yellow on blue on red>
+<green>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of red
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 108
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<red>
+<blue>
+<green>
+
+Goal state:
+<red on yellow>
+<blue on green>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of yellow
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 109
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<blue on red on white on yellow>
+
+Goal state:
+<red on white on yellow>
+<green>
+<blue>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of table
+
+
+### Example 110
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on blue>
+<green on yellow>
+
+Goal state:
+<blue on green on yellow>
+<red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 111
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<red on yellow on blue>
+
+Goal state:
+<yellow on blue>
+<green on red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 112
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<green on yellow>
+<red>
+
+Goal state:
+<yellow on green on blue>
+<red>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of blue
+step 3: pick-up yellow
+step 4: stack yellow on-top-of green
+
+
+### Example 113
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on blue>
+<green>
+<yellow>
+
+Goal state:
+<blue on green>
+<yellow>
+<red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 114
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on green on blue on yellow>
+
+Goal state:
+<blue on yellow>
+<red>
+<green>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of table
+
+
+### Example 115
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on yellow>
+<red>
+<blue>
+
+Goal state:
+<yellow on red>
+<blue>
+<green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of red
+
+
+### Example 116
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<white on red>
+<blue on yellow>
+<green>
+
+Goal state:
+<green on red>
+<white on blue on yellow>
+
+Plan:
+step 1: pick-up white
+step 2: stack white on-top-of blue
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 117
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<yellow on blue>
+<red>
+
+Goal state:
+<red on green on yellow on blue>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of yellow
+step 3: pick-up red
+step 4: stack red on-top-of green
+
+
+### Example 118
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<blue>
+<green on red>
+
+Goal state:
+<green on red>
+<yellow on blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 119
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<white on green>
+<blue on red>
+
+Goal state:
+<green>
+<blue on red>
+<yellow>
+<white>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up white
+step 4: stack white on-top-of table
+
+
+### Example 120
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<blue on green>
+<red>
+
+Goal state:
+<yellow on red on blue on green>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of blue
+step 3: pick-up yellow
+step 4: stack yellow on-top-of red
+
+
+### Example 121
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on blue>
+<red>
+<yellow>
+
+Goal state:
+<red on blue>
+<yellow>
+<green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of blue
+
+
+### Example 122
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<red>
+<blue>
+<green>
+
+Goal state:
+<blue>
+<green>
+<yellow on red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of red
+
+
+### Example 123
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<red on yellow>
+<blue>
+
+Goal state:
+<yellow>
+<green on red on blue>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of blue
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 124
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on blue on green>
+<red>
+
+Goal state:
+<green>
+<blue on yellow on red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of red
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 125
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on red>
+<yellow on green>
+
+Goal state:
+<blue on yellow on green>
+<red>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of yellow
+step 3: pick-up red
+step 4: stack red on-top-of table
+
+
+### Example 126
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<blue>
+<yellow on red>
+
+Goal state:
+<green on blue on yellow on red>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of yellow
+step 3: pick-up green
+step 4: stack green on-top-of blue
+
+
+### Example 127
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<blue on green on red>
+
+Goal state:
+<blue on yellow>
+<red>
+<green>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of yellow
+step 3: pick-up green
+step 4: stack green on-top-of table
+
+
+### Example 128
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on red>
+<yellow on green>
+
+Goal state:
+<green on blue on red>
+<yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of blue
+
+
+### Example 129
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<green on blue>
+<white on yellow>
+
+Goal state:
+<blue on red>
+<green on white on yellow>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of white
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 130
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<red>
+<yellow>
+<blue>
+
+Goal state:
+<yellow on green>
+<blue on red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of green
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 131
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on blue>
+<red on yellow>
+
+Goal state:
+<yellow on green on blue>
+<red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of green
+
+
+### Example 132
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on yellow>
+<red on blue>
+
+Goal state:
+<blue on green on yellow>
+<red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 133
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<yellow on red>
+<blue>
+
+Goal state:
+<red>
+<blue>
+<yellow on green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of green
+
+
+### Example 134
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on yellow on red>
+<green>
+
+Goal state:
+<green on yellow on red>
+<blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of yellow
+
+
+### Example 135
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<red>
+<yellow>
+<blue>
+
+Goal state:
+<blue on red>
+<green on yellow>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of yellow
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 136
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on yellow on green>
+<red>
+
+Goal state:
+<green>
+<red>
+<yellow on blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 137
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<green on yellow>
+<red>
+
+Goal state:
+<green on yellow>
+<blue>
+<red>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of table
+
+
+### Example 138
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on green>
+<blue>
+<red>
+
+Goal state:
+<yellow on blue>
+<green on red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of blue
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 139
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<white on yellow>
+<black>
+<blue on red on green>
+
+Goal state:
+<white on black>
+<blue on red on green>
+<yellow>
+
+Plan:
+step 1: pick-up white
+step 2: stack white on-top-of black
+step 3: pick-up yellow
+step 4: stack yellow on-top-of table
+
+
+### Example 140
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<white on red on yellow>
+<green>
+
+Goal state:
+<green on blue on white on red on yellow>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of white
+step 3: pick-up green
+step 4: stack green on-top-of blue
+
+
+### Example 141
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on blue>
+<red on green>
+
+Goal state:
+<yellow on blue>
+<green on red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 142
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<blue>
+<green on yellow>
+
+Goal state:
+<green on red>
+<yellow on blue>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of red
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 143
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<green on red>
+<yellow>
+
+Goal state:
+<yellow on blue on green on red>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of green
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 144
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<blue on red on yellow>
+
+Goal state:
+<red on yellow>
+<green on blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of blue
+
+
+### Example 145
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<yellow on blue>
+<green on white>
+
+Goal state:
+<green on red>
+<blue>
+<white>
+<yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 146
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on blue on black on yellow>
+<red>
+<white>
+
+Goal state:
+<red on white on green on blue on black on yellow>
+
+Plan:
+step 1: pick-up white
+step 2: stack white on-top-of green
+step 3: pick-up red
+step 4: stack red on-top-of white
+
+
+### Example 147
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on red on green on yellow>
+
+Goal state:
+<green on yellow>
+<red on blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of blue
+
+
+### Example 148
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on white>
+<red on green on yellow>
+
+Goal state:
+<white on red on green on yellow>
+<blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up white
+step 4: stack white on-top-of red
+
+
+### Example 149
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on blue>
+<green>
+<red>
+
+Goal state:
+<blue on yellow on green>
+<red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of green
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 150
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on yellow>
+<green>
+<red>
+
+Goal state:
+<yellow>
+<green on blue on red>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of red
+step 3: pick-up green
+step 4: stack green on-top-of blue
+
+
+### Example 151
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<yellow on green>
+<blue>
+
+Goal state:
+<red>
+<blue on green>
+<yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 152
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on yellow>
+<blue on white>
+<green>
+
+Goal state:
+<red on yellow>
+<blue on green>
+<white>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of green
+step 3: pick-up white
+step 4: stack white on-top-of table
+
+
+### Example 153
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<green on blue on red>
+
+Goal state:
+<yellow>
+<red>
+<blue on green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 154
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on white>
+<red>
+<blue>
+<green>
+
+Goal state:
+<red on green on yellow on white>
+<blue>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of yellow
+step 3: pick-up red
+step 4: stack red on-top-of green
+
+
+### Example 155
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on green on blue>
+<red>
+
+Goal state:
+<red on green on blue>
+<yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of green
+
+
+### Example 156
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on blue>
+<red on yellow>
+
+Goal state:
+<green on red on yellow>
+<blue>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of red
+step 3: pick-up blue
+step 4: stack blue on-top-of table
+
+
+### Example 157
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on yellow on red>
+<green>
+
+Goal state:
+<red>
+<green>
+<yellow on blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 158
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<white on red on yellow on blue>
+
+Goal state:
+<green on red on yellow on blue>
+<white>
+
+Plan:
+step 1: pick-up white
+step 2: stack white on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 159
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on yellow>
+<blue on green>
+
+Goal state:
+<red on blue on green>
+<yellow>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of blue
+step 3: pick-up yellow
+step 4: stack yellow on-top-of table
+
+
+### Example 160
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on red>
+<green on blue>
+
+Goal state:
+<red on yellow on green on blue>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of green
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 161
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on red>
+<green>
+<yellow>
+
+Goal state:
+<yellow on green on blue on red>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of blue
+step 3: pick-up yellow
+step 4: stack yellow on-top-of green
+
+
+### Example 162
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on yellow>
+<blue on red>
+
+Goal state:
+<red on green on yellow>
+<blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of green
+
+
+### Example 163
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<yellow on red>
+<green>
+
+Goal state:
+<yellow on blue>
+<red on green>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of blue
+step 3: pick-up red
+step 4: stack red on-top-of green
+
+
+### Example 164
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<yellow on green>
+<blue>
+
+Goal state:
+<green>
+<yellow on red on blue>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of blue
+step 3: pick-up yellow
+step 4: stack yellow on-top-of red
+
+
+### Example 165
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on red on green on yellow>
+
+Goal state:
+<green on yellow>
+<red on blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of blue
+
+
+### Example 166
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on white>
+<yellow on green>
+<blue>
+
+Goal state:
+<green on red on white>
+<yellow on blue>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of blue
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 167
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on red>
+<blue>
+<green>
+
+Goal state:
+<blue on green on yellow on red>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of yellow
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 168
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on green>
+<red on yellow>
+
+Goal state:
+<green on red on yellow>
+<blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 169
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<red>
+<green on yellow>
+
+Goal state:
+<blue>
+<red on yellow>
+<green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 170
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<green on yellow>
+<red>
+
+Goal state:
+<blue on red on green on yellow>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of green
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 171
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<blue>
+<red on yellow>
+
+Goal state:
+<red on yellow>
+<blue on green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 172
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<white>
+<red>
+<blue>
+<yellow on green>
+
+Goal state:
+<red on blue>
+<white on yellow on green>
+
+Plan:
+step 1: pick-up white
+step 2: stack white on-top-of yellow
+step 3: pick-up red
+step 4: stack red on-top-of blue
+
+
+### Example 173
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on green on blue>
+<yellow>
+
+Goal state:
+<blue>
+<green on red on yellow>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of yellow
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 174
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on yellow on red>
+<green>
+
+Goal state:
+<green on yellow on red>
+<blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of yellow
+
+
+### Example 175
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<blue>
+<yellow on red>
+
+Goal state:
+<blue on green on yellow on red>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of yellow
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 176
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<blue on yellow>
+<red>
+
+Goal state:
+<blue on green>
+<red on yellow>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of green
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 177
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<green>
+<yellow>
+<blue>
+
+Goal state:
+<green>
+<red on blue on yellow>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of yellow
+step 3: pick-up red
+step 4: stack red on-top-of blue
+
+
+### Example 178
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<green>
+<blue>
+<red>
+
+Goal state:
+<yellow>
+<blue on red>
+<green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 179
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<green>
+<blue>
+<yellow>
+
+Goal state:
+<blue on green>
+<yellow>
+<red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 180
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on red on blue>
+<green>
+
+Goal state:
+<blue>
+<red on yellow on green>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of green
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 181
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<white>
+<red>
+<blue on green on yellow>
+
+Goal state:
+<red on white on blue on green on yellow>
+
+Plan:
+step 1: pick-up white
+step 2: stack white on-top-of blue
+step 3: pick-up red
+step 4: stack red on-top-of white
+
+
+### Example 182
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<white on red>
+<green on yellow on black on blue>
+
+Goal state:
+<red on white on green on yellow on black on blue>
+
+Plan:
+step 1: pick-up white
+step 2: stack white on-top-of green
+step 3: pick-up red
+step 4: stack red on-top-of white
+
+
+### Example 183
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<yellow on green>
+<red>
+
+Goal state:
+<yellow on blue>
+<green on red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of blue
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 184
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<blue>
+<green on yellow>
+
+Goal state:
+<green on red on blue>
+<yellow>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of blue
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 185
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<yellow>
+<red on blue>
+
+Goal state:
+<red on yellow on green>
+<blue>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of green
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 186
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<red>
+<yellow on blue>
+
+Goal state:
+<green>
+<blue>
+<yellow on red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of red
+
+
+### Example 187
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<yellow on blue on green>
+
+Goal state:
+<blue on red>
+<green>
+<yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 188
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<red on green>
+<yellow>
+
+Goal state:
+<red on green>
+<yellow on blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 189
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on green>
+<yellow>
+<red>
+
+Goal state:
+<green on yellow>
+<red>
+<blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of yellow
+
+
+### Example 190
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<blue>
+<green>
+<yellow>
+
+Goal state:
+<red on green>
+<yellow>
+<blue>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of green
+step 3: pick-up blue
+step 4: stack blue on-top-of table
+
+
+### Example 191
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on blue>
+<green>
+<yellow>
+
+Goal state:
+<yellow on green on red on blue>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of red
+step 3: pick-up yellow
+step 4: stack yellow on-top-of green
+
+
+### Example 192
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<yellow on green on red>
+
+Goal state:
+<green on red>
+<blue>
+<yellow>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of table
+
+
+### Example 193
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on blue>
+<yellow>
+<red>
+
+Goal state:
+<blue>
+<green on red>
+<yellow>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of red
+step 3: pick-up yellow
+step 4: stack yellow on-top-of table
+
+
+### Example 194
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on yellow>
+<green on red>
+
+Goal state:
+<yellow on blue on green on red>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of green
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 195
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<green on yellow>
+<blue>
+
+Goal state:
+<red>
+<yellow on green on blue>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of blue
+step 3: pick-up yellow
+step 4: stack yellow on-top-of green
+
+
+### Example 196
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on green on blue>
+<red>
+
+Goal state:
+<green on blue>
+<red on yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 197
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on white on green on black>
+<yellow on red>
+
+Goal state:
+<green on black>
+<white on blue on yellow on red>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of yellow
+step 3: pick-up white
+step 4: stack white on-top-of blue
+
+
+### Example 198
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<yellow>
+<green>
+<red>
+
+Goal state:
+<green on blue>
+<yellow on red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of red
+step 3: pick-up green
+step 4: stack green on-top-of blue
+
+
+### Example 199
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<green>
+<yellow on red>
+
+Goal state:
+<yellow on green>
+<blue on red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of green
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 200
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on red on white on blue on yellow>
+
+Goal state:
+<white on blue on yellow>
+<red on green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of green
+
+
+### Example 201
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on green on yellow on blue>
+
+Goal state:
+<yellow on blue>
+<red>
+<green>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of table
+
+
+### Example 202
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<red>
+<green on yellow>
+
+Goal state:
+<green on red on blue>
+<yellow>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of blue
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 203
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on green on red on yellow>
+
+Goal state:
+<red on yellow>
+<green on blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of blue
+
+
+### Example 204
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<green>
+<blue>
+<yellow>
+
+Goal state:
+<red>
+<yellow>
+<blue on green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 205
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<blue on green on red>
+<white>
+
+Goal state:
+<white on blue on yellow>
+<green on red>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of yellow
+step 3: pick-up white
+step 4: stack white on-top-of blue
+
+
+### Example 206
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on green>
+<yellow>
+<blue>
+
+Goal state:
+<green on yellow>
+<red on blue>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of blue
+step 3: pick-up green
+step 4: stack green on-top-of yellow
+
+
+### Example 207
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on blue on red on yellow>
+
+Goal state:
+<red on yellow>
+<blue on green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 208
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<blue>
+<red>
+<yellow>
+
+Goal state:
+<red on green>
+<yellow on blue>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of green
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 209
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<yellow on green on red>
+
+Goal state:
+<green on yellow on blue>
+<red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of blue
+step 3: pick-up green
+step 4: stack green on-top-of yellow
+
+
+### Example 210
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on red>
+<yellow>
+<blue>
+
+Goal state:
+<green on yellow>
+<red on blue>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of yellow
+step 3: pick-up red
+step 4: stack red on-top-of blue
+
+
+### Example 211
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<yellow>
+<blue on red>
+
+Goal state:
+<yellow on blue on green>
+<red>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of green
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 212
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on red on white on yellow on blue>
+
+Goal state:
+<white on yellow on blue>
+<red on green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of green
+
+
+### Example 213
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<white on yellow>
+<blue>
+<red>
+<green>
+
+Goal state:
+<green on blue on white on yellow>
+<red>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of white
+step 3: pick-up green
+step 4: stack green on-top-of blue
+
+
+### Example 214
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<white on blue>
+<red>
+<yellow on green>
+
+Goal state:
+<yellow on white on blue>
+<red on green>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of white
+step 3: pick-up red
+step 4: stack red on-top-of green
+
+
+### Example 215
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on blue>
+<green on yellow>
+
+Goal state:
+<blue on green on yellow>
+<red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 216
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on green>
+<red>
+<blue>
+
+Goal state:
+<green on red>
+<yellow on blue>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of blue
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 217
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<yellow>
+<blue on green>
+
+Goal state:
+<blue on red>
+<green>
+<yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 218
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on yellow>
+<red on blue>
+
+Goal state:
+<blue on red on green on yellow>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of green
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 219
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<white on yellow>
+<green on blue on red>
+
+Goal state:
+<yellow on green on blue on red>
+<white>
+
+Plan:
+step 1: pick-up white
+step 2: stack white on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of green
+
+
+### Example 220
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<yellow>
+<blue on green>
+
+Goal state:
+<red>
+<green on yellow>
+<blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of yellow
+
+
+### Example 221
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<yellow on blue on red>
+
+Goal state:
+<yellow on green>
+<red>
+<blue>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of green
+step 3: pick-up blue
+step 4: stack blue on-top-of table
+
+
+### Example 222
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on red>
+<blue on yellow>
+
+Goal state:
+<yellow on blue on green on red>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of green
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 223
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<red on white on blue>
+<yellow>
+
+Goal state:
+<white on blue>
+<red on yellow>
+<green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 224
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<green on yellow>
+<blue>
+
+Goal state:
+<blue on red on green on yellow>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of green
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 225
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on yellow on green on red>
+
+Goal state:
+<green on red>
+<blue>
+<yellow>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of table
+
+
+### Example 226
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<yellow on green>
+<red>
+
+Goal state:
+<yellow on green>
+<red on blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of blue
+
+
+### Example 227
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<green>
+<yellow>
+<blue>
+
+Goal state:
+<red>
+<yellow on green on blue>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of blue
+step 3: pick-up yellow
+step 4: stack yellow on-top-of green
+
+
+### Example 228
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<yellow on blue>
+<white on red>
+
+Goal state:
+<white on yellow on blue>
+<red>
+<green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up white
+step 4: stack white on-top-of yellow
+
+
+### Example 229
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<green on blue on yellow>
+
+Goal state:
+<blue on yellow>
+<green on red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 230
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on red>
+<yellow>
+<blue>
+
+Goal state:
+<red>
+<yellow>
+<blue on green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 231
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<blue>
+<green>
+<yellow>
+
+Goal state:
+<blue>
+<red on yellow on green>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of green
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 232
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on yellow on white>
+<red on green>
+
+Goal state:
+<green on blue on yellow on white>
+<red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of blue
+
+
+### Example 233
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<blue on red on green>
+
+Goal state:
+<yellow>
+<green>
+<red on blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of blue
+
+
+### Example 234
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<yellow on green>
+<red>
+
+Goal state:
+<blue>
+<yellow on red>
+<green>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of red
+step 3: pick-up green
+step 4: stack green on-top-of table
+
+
+### Example 235
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<blue>
+<red on green>
+
+Goal state:
+<red on green>
+<yellow>
+<blue>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of table
+
+
+### Example 236
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<blue>
+<red on green>
+
+Goal state:
+<red on yellow>
+<green on blue>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of yellow
+step 3: pick-up green
+step 4: stack green on-top-of blue
+
+
+### Example 237
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on red>
+<yellow on green>
+
+Goal state:
+<red on yellow on green>
+<blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 238
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on blue on green>
+<yellow>
+
+Goal state:
+<green>
+<blue on red on yellow>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of yellow
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 239
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<red on blue>
+<yellow>
+
+Goal state:
+<yellow on red on blue>
+<green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of red
+
+
+### Example 240
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on blue>
+<yellow on red>
+
+Goal state:
+<red on yellow on green on blue>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of green
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 241
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<white on red>
+<green on blue>
+
+Goal state:
+<blue on green on yellow>
+<white on red>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of yellow
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 242
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<green>
+<red on yellow>
+
+Goal state:
+<red on green>
+<yellow>
+<blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of green
+
+
+### Example 243
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on green>
+<blue>
+<yellow>
+
+Goal state:
+<red on blue>
+<yellow>
+<green>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of blue
+step 3: pick-up green
+step 4: stack green on-top-of table
+
+
+### Example 244
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<yellow on white on blue on red>
+
+Goal state:
+<white on yellow on green>
+<blue on red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of green
+step 3: pick-up white
+step 4: stack white on-top-of yellow
+
+
+### Example 245
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on green>
+<blue>
+<red>
+
+Goal state:
+<blue on red on yellow on green>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of yellow
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 246
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on blue>
+<red>
+<green>
+
+Goal state:
+<red on blue>
+<green>
+<yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of blue
+
+
+### Example 247
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<yellow>
+<red on blue>
+
+Goal state:
+<green>
+<yellow>
+<blue on red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 248
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<yellow>
+<red>
+<green>
+
+Goal state:
+<blue>
+<green on yellow on red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of red
+step 3: pick-up green
+step 4: stack green on-top-of yellow
+
+
+### Example 249
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<green>
+<yellow>
+<red>
+
+Goal state:
+<blue>
+<red on yellow>
+<green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 250
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on yellow on red on green>
+
+Goal state:
+<red on green>
+<blue>
+<yellow>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of table
+
+
+### Example 251
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on yellow>
+<red>
+<green>
+
+Goal state:
+<red>
+<yellow on blue on green>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of green
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 252
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on blue>
+<red on yellow>
+
+Goal state:
+<yellow on green on blue>
+<red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of green
+
+
+### Example 253
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<green on red>
+<blue on white>
+
+Goal state:
+<blue on yellow>
+<white on green on red>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of yellow
+step 3: pick-up white
+step 4: stack white on-top-of green
+
+
+### Example 254
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on blue on yellow>
+<green>
+
+Goal state:
+<blue on yellow>
+<green on red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 255
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<red on yellow>
+<blue>
+
+Goal state:
+<yellow on green>
+<red on blue>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of blue
+step 3: pick-up yellow
+step 4: stack yellow on-top-of green
+
+
+### Example 256
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on yellow on green>
+<blue>
+
+Goal state:
+<yellow on green>
+<blue on red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 257
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<blue>
+<green>
+<yellow>
+
+Goal state:
+<green>
+<blue on yellow>
+<red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 258
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on yellow>
+<red on blue>
+
+Goal state:
+<blue on red on green on yellow>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of green
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 259
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<yellow on blue>
+<red>
+
+Goal state:
+<red on green on yellow on blue>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of yellow
+step 3: pick-up red
+step 4: stack red on-top-of green
+
+
+### Example 260
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on yellow on red on green>
+
+Goal state:
+<red on green>
+<yellow on blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 261
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on red>
+<yellow on green>
+
+Goal state:
+<red on blue on yellow on green>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of yellow
+step 3: pick-up red
+step 4: stack red on-top-of blue
+
+
+### Example 262
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<blue>
+<white>
+<green on yellow>
+
+Goal state:
+<red>
+<green on blue>
+<white on yellow>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of blue
+step 3: pick-up white
+step 4: stack white on-top-of yellow
+
+
+### Example 263
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on white on green on yellow on red>
+
+Goal state:
+<green on yellow on red>
+<white on blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up white
+step 4: stack white on-top-of blue
+
+
+### Example 264
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<yellow>
+<blue on green>
+
+Goal state:
+<blue on green>
+<yellow on red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of red
+
+
+### Example 265
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<yellow on green>
+<blue on white>
+
+Goal state:
+<green>
+<red on yellow on blue on white>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of blue
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 266
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on red>
+<blue on yellow>
+
+Goal state:
+<green on red>
+<yellow on blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 267
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on green>
+<white on red on yellow>
+
+Goal state:
+<green on blue on white on red on yellow>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of white
+step 3: pick-up green
+step 4: stack green on-top-of blue
+
+
+### Example 268
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<red>
+<yellow on green>
+
+Goal state:
+<blue on yellow on green>
+<red>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of yellow
+step 3: pick-up red
+step 4: stack red on-top-of table
+
+
+### Example 269
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<white on green on red on yellow>
+<blue>
+
+Goal state:
+<red on yellow>
+<green on white on blue>
+
+Plan:
+step 1: pick-up white
+step 2: stack white on-top-of blue
+step 3: pick-up green
+step 4: stack green on-top-of white
+
+
+### Example 270
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on red>
+<yellow>
+<blue>
+
+Goal state:
+<red on yellow>
+<blue>
+<green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 271
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<green on red>
+<yellow>
+
+Goal state:
+<red>
+<blue on green on yellow>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of yellow
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 272
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<blue>
+<yellow on green>
+
+Goal state:
+<yellow on blue>
+<green>
+<red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 273
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<green>
+<blue on white>
+<red>
+
+Goal state:
+<yellow>
+<green on red on blue on white>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of blue
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 274
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<red>
+<yellow on green>
+
+Goal state:
+<red>
+<green>
+<blue on yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 275
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on red>
+<yellow>
+<blue>
+
+Goal state:
+<red on yellow>
+<blue>
+<green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 276
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on red on yellow on green>
+
+Goal state:
+<yellow on green>
+<red on blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of blue
+
+
+### Example 277
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<red>
+<green>
+<yellow>
+
+Goal state:
+<blue>
+<yellow on green on red>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of red
+step 3: pick-up yellow
+step 4: stack yellow on-top-of green
+
+
+### Example 278
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<red>
+<blue on green>
+
+Goal state:
+<yellow>
+<green on red>
+<blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 279
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on blue>
+<red>
+<yellow>
+
+Goal state:
+<red on yellow on green on blue>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of green
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 280
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<white on red>
+<yellow on green>
+
+Goal state:
+<red>
+<yellow on green>
+<blue on white>
+
+Plan:
+step 1: pick-up white
+step 2: stack white on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of white
+
+
+### Example 281
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on red>
+<yellow>
+<green>
+
+Goal state:
+<red>
+<green>
+<blue on yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 282
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on red>
+<green on blue>
+
+Goal state:
+<red on yellow on green on blue>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of green
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 283
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<yellow>
+<white>
+<red on blue>
+
+Goal state:
+<green>
+<red on yellow>
+<blue>
+<white>
+
+Plan:
+step 1: pick-up white
+step 2: stack white on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 284
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<green on blue>
+<yellow>
+
+Goal state:
+<green on red>
+<yellow on blue>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of red
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 285
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<red>
+<green>
+<blue>
+
+Goal state:
+<green>
+<yellow on blue>
+<red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of blue
+step 3: pick-up red
+step 4: stack red on-top-of table
+
+
+### Example 286
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<red>
+<white on green on yellow>
+
+Goal state:
+<white on green on yellow>
+<blue on red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 287
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on blue>
+<yellow on green>
+
+Goal state:
+<green on yellow on red on blue>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of red
+step 3: pick-up green
+step 4: stack green on-top-of yellow
+
+
+### Example 288
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on blue>
+<red>
+<green>
+
+Goal state:
+<red>
+<green>
+<yellow>
+<blue>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of table
+
+
+### Example 289
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<white on blue>
+<red on yellow on green>
+
+Goal state:
+<red on yellow on green>
+<blue on white>
+
+Plan:
+step 1: pick-up white
+step 2: stack white on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of white
+
+
+### Example 290
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<white on blue on yellow>
+<red on green>
+
+Goal state:
+<yellow>
+<red on green>
+<blue on white>
+
+Plan:
+step 1: pick-up white
+step 2: stack white on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of white
+
+
+### Example 291
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<green>
+<blue on yellow>
+
+Goal state:
+<blue on yellow>
+<red>
+<green>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of table
+
+
+### Example 292
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<blue on yellow>
+<red>
+
+Goal state:
+<red on blue on yellow>
+<green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of blue
+
+
+### Example 293
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on green>
+<red on yellow>
+
+Goal state:
+<yellow on red on blue on green>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of blue
+step 3: pick-up yellow
+step 4: stack yellow on-top-of red
+
+
+### Example 294
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<blue>
+<yellow on green>
+
+Goal state:
+<yellow on green>
+<blue on red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 295
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on green>
+<red on blue>
+
+Goal state:
+<blue on red on yellow on green>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of yellow
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 296
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on blue>
+<green on red>
+
+Goal state:
+<blue on yellow on green on red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of green
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 297
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<red on blue on green>
+
+Goal state:
+<blue on green>
+<red on yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 298
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on yellow>
+<red>
+<green>
+
+Goal state:
+<green on red on blue on yellow>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of blue
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 299
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<green>
+<red>
+<blue>
+
+Goal state:
+<yellow on red>
+<blue>
+<green>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of red
+step 3: pick-up green
+step 4: stack green on-top-of table
+
+
+### Example 300
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<red on blue>
+<yellow on white>
+
+Goal state:
+<blue>
+<green on red on yellow on white>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of yellow
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 301
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<blue>
+<yellow on green>
+
+Goal state:
+<blue>
+<green>
+<red on yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 302
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<red>
+<yellow on green>
+
+Goal state:
+<green on blue>
+<yellow on red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of red
+step 3: pick-up green
+step 4: stack green on-top-of blue
+
+
+### Example 303
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<white>
+<green on red>
+<yellow>
+
+Goal state:
+<blue on yellow on white>
+<green on red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of white
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 304
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<blue on yellow>
+<green>
+
+Goal state:
+<red>
+<green on yellow>
+<blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of yellow
+
+
+### Example 305
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<green on red>
+<black on white on blue>
+
+Goal state:
+<yellow on red>
+<black on white on blue>
+<green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of red
+
+
+### Example 306
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on green>
+<yellow on blue>
+
+Goal state:
+<green>
+<blue>
+<red on yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 307
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on yellow>
+<blue on green>
+
+Goal state:
+<red on yellow>
+<green on blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of blue
+
+
+### Example 308
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on red>
+<blue>
+<green>
+
+Goal state:
+<blue on red>
+<yellow on green>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of green
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 309
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<blue on green>
+<yellow>
+
+Goal state:
+<green on blue on red>
+<yellow>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of red
+step 3: pick-up green
+step 4: stack green on-top-of blue
+
+
+### Example 310
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<yellow on green>
+<blue>
+
+Goal state:
+<yellow on red>
+<green on blue>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of red
+step 3: pick-up green
+step 4: stack green on-top-of blue
+
+
+### Example 311
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on green>
+<red>
+<yellow>
+
+Goal state:
+<red on yellow on blue on green>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of blue
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 312
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on red>
+<green on yellow>
+
+Goal state:
+<blue on green on yellow>
+<red>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of green
+step 3: pick-up red
+step 4: stack red on-top-of table
+
+
+### Example 313
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<red on green on yellow>
+
+Goal state:
+<green on yellow>
+<red on blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of blue
+
+
+### Example 314
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on blue>
+<red>
+<green>
+
+Goal state:
+<red>
+<yellow on green>
+<blue>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of green
+step 3: pick-up blue
+step 4: stack blue on-top-of table
+
+
+### Example 315
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<green>
+<yellow on red>
+
+Goal state:
+<blue>
+<green>
+<red on yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 316
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<green>
+<blue on yellow>
+
+Goal state:
+<green on red on blue on yellow>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of blue
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 317
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on green>
+<red>
+<yellow>
+
+Goal state:
+<red on yellow on blue on green>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of blue
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 318
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<yellow on blue>
+<red>
+
+Goal state:
+<red on green on yellow on blue>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of yellow
+step 3: pick-up red
+step 4: stack red on-top-of green
+
+
+### Example 319
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on red>
+<blue on yellow>
+
+Goal state:
+<yellow on blue on green on red>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of green
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 320
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<red on yellow>
+<green>
+
+Goal state:
+<red on blue>
+<green on yellow>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of blue
+step 3: pick-up green
+step 4: stack green on-top-of yellow
+
+
+### Example 321
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<blue on yellow on green>
+
+Goal state:
+<red>
+<green>
+<blue>
+<yellow>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of table
+
+
+### Example 322
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on blue>
+<yellow>
+<green>
+
+Goal state:
+<blue>
+<red on green on yellow>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of yellow
+step 3: pick-up red
+step 4: stack red on-top-of green
+
+
+### Example 323
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<blue>
+<yellow>
+<green>
+
+Goal state:
+<blue on yellow on red>
+<green>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of red
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 324
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on red on yellow on blue>
+
+Goal state:
+<yellow on blue>
+<green>
+<red>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of table
+
+
+### Example 325
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<white>
+<green on blue on yellow>
+
+Goal state:
+<white>
+<blue on yellow>
+<green>
+<red>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of table
+
+
+### Example 326
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<red on green>
+<blue>
+
+Goal state:
+<green on yellow>
+<blue>
+<red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of yellow
+
+
+### Example 327
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on red>
+<green>
+<yellow>
+
+Goal state:
+<green on yellow on blue on red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of blue
+step 3: pick-up green
+step 4: stack green on-top-of yellow
+
+
+### Example 328
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<blue on yellow>
+<red>
+
+Goal state:
+<green>
+<yellow on red>
+<blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of red
+
+
+### Example 329
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on green>
+<yellow on red>
+<white>
+
+Goal state:
+<blue on green>
+<yellow on white>
+<red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of white
+step 3: pick-up red
+step 4: stack red on-top-of table
+
+
+### Example 330
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on yellow>
+<green on red>
+
+Goal state:
+<blue on green on red>
+<yellow>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of green
+step 3: pick-up yellow
+step 4: stack yellow on-top-of table
+
+
+### Example 331
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<green>
+<blue>
+<red>
+
+Goal state:
+<green>
+<blue on yellow on red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of red
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 332
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on yellow>
+<red on blue>
+
+Goal state:
+<green on yellow>
+<blue on red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 333
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on blue>
+<yellow>
+<red>
+
+Goal state:
+<blue>
+<yellow on green on red>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of red
+step 3: pick-up yellow
+step 4: stack yellow on-top-of green
+
+
+### Example 334
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on green>
+<blue>
+<yellow>
+
+Goal state:
+<green on blue>
+<yellow>
+<red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of blue
+
+
+### Example 335
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<green on blue>
+<red>
+
+Goal state:
+<red on green on yellow>
+<blue>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of yellow
+step 3: pick-up red
+step 4: stack red on-top-of green
+
+
+### Example 336
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on white on blue>
+<yellow on green>
+
+Goal state:
+<red on white on blue>
+<green on yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of yellow
+
+
+### Example 337
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on green>
+<blue on red>
+
+Goal state:
+<blue on red>
+<yellow>
+<green>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of table
+
+
+### Example 338
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<red on green on blue>
+
+Goal state:
+<green on red on yellow>
+<blue>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of yellow
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 339
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<green>
+<white on red on blue>
+
+Goal state:
+<green on white on yellow>
+<red on blue>
+
+Plan:
+step 1: pick-up white
+step 2: stack white on-top-of yellow
+step 3: pick-up green
+step 4: stack green on-top-of white
+
+
+### Example 340
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on yellow>
+<green on red>
+
+Goal state:
+<red on green on blue on yellow>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of blue
+step 3: pick-up red
+step 4: stack red on-top-of green
+
+
+### Example 341
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on green>
+<blue>
+<red>
+
+Goal state:
+<green>
+<blue on red>
+<yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 342
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on red on yellow on blue>
+
+Goal state:
+<yellow on blue>
+<red on green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of green
+
+
+### Example 343
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<yellow>
+<green>
+<blue>
+
+Goal state:
+<blue on yellow>
+<red on green>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of green
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 344
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<green on blue>
+<red>
+
+Goal state:
+<red on yellow on green on blue>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of green
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 345
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<yellow>
+<green on red>
+
+Goal state:
+<green on yellow on blue>
+<red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of blue
+step 3: pick-up green
+step 4: stack green on-top-of yellow
+
+
+### Example 346
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on red>
+<yellow>
+<green>
+
+Goal state:
+<green on red>
+<blue on yellow>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of yellow
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 347
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on blue>
+<yellow>
+<green>
+
+Goal state:
+<red on yellow>
+<blue on green>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of yellow
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 348
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on blue>
+<yellow>
+<red>
+
+Goal state:
+<blue>
+<red on green on yellow>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of yellow
+step 3: pick-up red
+step 4: stack red on-top-of green
+
+
+### Example 349
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<blue on green>
+<yellow>
+
+Goal state:
+<red>
+<blue on yellow>
+<green>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of yellow
+step 3: pick-up green
+step 4: stack green on-top-of table
+
+
+### Example 350
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<yellow on green>
+<red>
+
+Goal state:
+<blue>
+<green on yellow on red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of red
+step 3: pick-up green
+step 4: stack green on-top-of yellow
+
+
+### Example 351
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<blue on green>
+<red>
+
+Goal state:
+<yellow>
+<blue on red>
+<green>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of red
+step 3: pick-up green
+step 4: stack green on-top-of table
+
+
+### Example 352
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<white on blue>
+<red>
+<yellow on green>
+
+Goal state:
+<yellow on white on blue>
+<green on red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of white
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 353
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on white>
+<blue>
+<red>
+<yellow>
+
+Goal state:
+<green on white>
+<yellow on red on blue>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of blue
+step 3: pick-up yellow
+step 4: stack yellow on-top-of red
+
+
+### Example 354
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<red>
+<yellow on blue>
+
+Goal state:
+<yellow on green on red>
+<blue>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of red
+step 3: pick-up yellow
+step 4: stack yellow on-top-of green
+
+
+### Example 355
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<blue>
+<yellow on green>
+
+Goal state:
+<blue>
+<red on green>
+<yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of green
+
+
+### Example 356
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<green>
+<blue>
+<yellow on white>
+
+Goal state:
+<red on green>
+<blue on yellow on white>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of green
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 357
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on red>
+<blue on yellow>
+
+Goal state:
+<yellow on blue on green on red>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of green
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 358
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on blue>
+<green on red>
+
+Goal state:
+<red on yellow on blue>
+<green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 359
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<yellow>
+<blue on red>
+
+Goal state:
+<blue on red>
+<green on yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of yellow
+
+
+### Example 360
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on red>
+<yellow on blue>
+
+Goal state:
+<yellow on red>
+<blue>
+<green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of red
+
+
+### Example 361
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<red>
+<green on blue>
+
+Goal state:
+<green on blue>
+<red on yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 362
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on blue>
+<red on yellow>
+
+Goal state:
+<red on yellow>
+<green>
+<blue>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of table
+
+
+### Example 363
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<yellow on green>
+<red>
+
+Goal state:
+<yellow on green>
+<red on blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of blue
+
+
+### Example 364
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on yellow>
+<blue on green>
+
+Goal state:
+<blue on yellow>
+<green>
+<red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 365
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<green>
+<yellow on blue>
+<white>
+
+Goal state:
+<yellow on red>
+<white on green>
+<blue>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of red
+step 3: pick-up white
+step 4: stack white on-top-of green
+
+
+### Example 366
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on red>
+<blue on yellow>
+
+Goal state:
+<red>
+<green on yellow>
+<blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of yellow
+
+
+### Example 367
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on blue on green on red>
+
+Goal state:
+<green on red>
+<blue on yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 368
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<yellow>
+<blue on red>
+
+Goal state:
+<yellow on green on blue on red>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of blue
+step 3: pick-up yellow
+step 4: stack yellow on-top-of green
+
+
+### Example 369
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on red>
+<green>
+<yellow>
+
+Goal state:
+<green>
+<red on yellow>
+<blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 370
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<blue>
+<green>
+<red>
+
+Goal state:
+<blue>
+<red>
+<green on yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of yellow
+
+
+### Example 371
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<yellow>
+<blue on green>
+
+Goal state:
+<yellow on blue on red>
+<green>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of red
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 372
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<white on green>
+<blue on yellow>
+
+Goal state:
+<blue on red>
+<green>
+<white on yellow>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of red
+step 3: pick-up white
+step 4: stack white on-top-of yellow
+
+
+### Example 373
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<green>
+<red on yellow>
+
+Goal state:
+<yellow on blue>
+<red on green>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of green
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 374
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<red>
+<blue on yellow>
+
+Goal state:
+<blue on green>
+<yellow on red>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of green
+step 3: pick-up yellow
+step 4: stack yellow on-top-of red
+
+
+### Example 375
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<red>
+<blue on yellow>
+
+Goal state:
+<blue on green>
+<red on yellow>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of green
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 376
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<blue>
+<yellow on green>
+
+Goal state:
+<red>
+<green>
+<blue on yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 377
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on red>
+<green>
+<blue>
+
+Goal state:
+<green>
+<red on blue>
+<yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of blue
+
+
+### Example 378
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on yellow>
+<blue on green>
+
+Goal state:
+<blue on yellow>
+<green>
+<red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 379
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on yellow>
+<blue on green>
+
+Goal state:
+<green on red on yellow>
+<blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 380
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on blue>
+<white>
+<red on yellow>
+
+Goal state:
+<red on blue>
+<green on white>
+<yellow>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of white
+step 3: pick-up red
+step 4: stack red on-top-of blue
+
+
+### Example 381
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<green on red>
+<blue>
+
+Goal state:
+<yellow>
+<green on blue>
+<red>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of blue
+step 3: pick-up red
+step 4: stack red on-top-of table
+
+
+### Example 382
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on blue on green on yellow>
+
+Goal state:
+<green on yellow>
+<blue on red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 383
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on white on green on blue on red>
+
+Goal state:
+<green on blue on red>
+<white on yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up white
+step 4: stack white on-top-of yellow
+
+
+### Example 384
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on red on blue on yellow>
+
+Goal state:
+<blue on yellow>
+<red on green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of green
+
+
+### Example 385
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<red on yellow>
+<green>
+
+Goal state:
+<yellow>
+<red on green>
+<blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of green
+
+
+### Example 386
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on green>
+<blue>
+<red>
+
+Goal state:
+<red on blue on yellow on green>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of yellow
+step 3: pick-up red
+step 4: stack red on-top-of blue
+
+
+### Example 387
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<green on blue>
+<red>
+
+Goal state:
+<blue on green on yellow>
+<red>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of yellow
+step 3: pick-up blue
+step 4: stack blue on-top-of green
+
+
+### Example 388
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on green>
+<blue>
+<red>
+
+Goal state:
+<red on blue on yellow on green>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of yellow
+step 3: pick-up red
+step 4: stack red on-top-of blue
+
+
+### Example 389
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<blue on yellow>
+<red>
+
+Goal state:
+<green>
+<red on yellow>
+<blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 390
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<red>
+<blue>
+<green>
+
+Goal state:
+<blue>
+<yellow on green>
+<red>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of green
+step 3: pick-up red
+step 4: stack red on-top-of table
+
+
+### Example 391
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<yellow>
+<red on blue>
+
+Goal state:
+<red on yellow>
+<blue>
+<green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 392
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<red>
+<yellow on green>
+
+Goal state:
+<red on yellow on green>
+<blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of yellow
+
+
+### Example 393
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<blue>
+<red on yellow>
+
+Goal state:
+<red on green>
+<blue on yellow>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of green
+step 3: pick-up blue
+step 4: stack blue on-top-of yellow
+
+
+### Example 394
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on green>
+<blue on yellow>
+
+Goal state:
+<blue on yellow>
+<green on red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of red
+
+
+### Example 395
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<green on yellow on blue>
+
+Goal state:
+<yellow on blue>
+<red on green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of green
+
+
+### Example 396
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on yellow>
+<green>
+<blue>
+
+Goal state:
+<red on green>
+<yellow on blue>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of green
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 397
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<yellow>
+<red on green>
+
+Goal state:
+<red on green>
+<yellow on blue>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of blue
+
+
+### Example 398
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<blue>
+<green on yellow>
+
+Goal state:
+<green on yellow>
+<blue on red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up blue
+step 4: stack blue on-top-of red
+
+
+### Example 399
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on red>
+<blue>
+<white on green>
+
+Goal state:
+<red on blue>
+<white on green>
+<yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of blue
+
+
+### Example 400
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on green on blue>
+<red on white>
+
+Goal state:
+<green on blue>
+<yellow on white>
+<red>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of white
+
+
+### Example 401
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red on green>
+<blue on yellow>
+
+Goal state:
+<blue on yellow>
+<red>
+<green>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of table
+
+
+### Example 402
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on green>
+<red on yellow>
+
+Goal state:
+<yellow on red on blue on green>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of blue
+step 3: pick-up yellow
+step 4: stack yellow on-top-of red
+
+
+### Example 403
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on red>
+<yellow on green>
+
+Goal state:
+<green on blue on red>
+<yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up green
+step 4: stack green on-top-of blue
+
+
+### Example 404
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<red on yellow>
+<blue>
+
+Goal state:
+<yellow on green>
+<red on blue>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of blue
+step 3: pick-up yellow
+step 4: stack yellow on-top-of green
+
+
+### Example 405
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<green on red>
+<yellow>
+
+Goal state:
+<red on green on blue>
+<yellow>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of blue
+step 3: pick-up red
+step 4: stack red on-top-of green
+
+
+### Example 406
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on yellow>
+<green on red>
+
+Goal state:
+<green on red>
+<blue>
+<yellow>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of table
+step 3: pick-up yellow
+step 4: stack yellow on-top-of table
+
+
+### Example 407
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow on blue on green>
+<red>
+
+Goal state:
+<red on blue on green>
+<yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+step 3: pick-up red
+step 4: stack red on-top-of blue
+
+

@@ -1,0 +1,120 @@
+### Example 1
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on yellow>
+<red on green>
+
+Goal state:
+<red on blue on yellow>
+<green>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of blue
+
+
+### Example 2
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue>
+<green on red on yellow>
+
+Goal state:
+<blue on green on red on yellow>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of green
+
+
+### Example 3
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<red>
+<green>
+<blue on yellow>
+
+Goal state:
+<green>
+<red on blue on yellow>
+
+Plan:
+step 1: pick-up red
+step 2: stack red on-top-of blue
+
+
+### Example 4
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green on red on blue on yellow>
+
+Goal state:
+<red on blue on yellow>
+<green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+
+
+### Example 5
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<blue on green on red>
+<yellow>
+
+Goal state:
+<green on red>
+<blue on yellow>
+
+Plan:
+step 1: pick-up blue
+step 2: stack blue on-top-of yellow
+
+
+### Example 6
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<green>
+<blue on red on yellow>
+
+Goal state:
+<blue on red on yellow>
+<green>
+
+Plan:
+step 1: pick-up green
+step 2: stack green on-top-of table
+
+
+### Example 7
+Rule:
+You can pick-up color1. You can stack color1 on-top-of color2. You can stack color1 on-top-of table.
+
+Init state:
+<yellow>
+<green>
+<blue on red>
+
+Goal state:
+<green>
+<blue on red>
+<yellow>
+
+Plan:
+step 1: pick-up yellow
+step 2: stack yellow on-top-of table
+
+

@@ -272,18 +272,26 @@ def save_as_jsonl(examples: List[Dict[str, Any]], path: str) -> None:
 
 
 if __name__ == "__main__":
-    # hyperparams from the paper:
+    # Hyperparams from the paper (Table 1)
     min_colors = 4
     max_colors = 6
     max_piles = 4
     max_steps = 6
 
-    n_L1 = 100  # L1 is 2-step plans (easy)
-    n_L2 = 100  # L2 is 4-step plans (medium)
-    n_L3 = 100  # L3 is 6-step plans (hard)
+    # Match paper's dataset sizes (train:test = 1:3)
+    # L1: 7 train + 115 test = 122 total
+    # L2: 88 train + 407 test = 495 total
+    # L3: 472 train + 1057 test = 1529 total
+    n_L1_total = 122  # 2-step plans (easy)
+    n_L2_total = 495  # 4-step plans (medium)
+    n_L3_total = 1529  # 6-step plans (hard)
 
+    print("Generating datasets to match paper (Table 1)...")
+
+    # Generate full datasets
+    print(f"Generating L1 ({n_L1_total} examples)...")
     ds_L1 = generate_dataset(
-        num_examples=n_L1,
+        num_examples=n_L1_total,
         desired_steps=2,
         min_colors=min_colors,
         max_colors=max_colors,
@@ -292,8 +300,9 @@ if __name__ == "__main__":
         seed=1,
     )
 
+    print(f"Generating L2 ({n_L2_total} examples)...")
     ds_L2 = generate_dataset(
-        num_examples=n_L2,
+        num_examples=n_L2_total,
         desired_steps=4,
         min_colors=min_colors,
         max_colors=max_colors,
@@ -302,8 +311,9 @@ if __name__ == "__main__":
         seed=2,
     )
 
+    print(f"Generating L3 ({n_L3_total} examples)...")
     ds_L3 = generate_dataset(
-        num_examples=n_L3,
+        num_examples=n_L3_total,
         desired_steps=6,
         min_colors=min_colors,
         max_colors=max_colors,
@@ -312,12 +322,63 @@ if __name__ == "__main__":
         seed=3,
     )
 
-    save_as_text(ds_L1, "./data/blocksworld_L1.txt")
-    save_as_text(ds_L2, "./data/blocksworld_L2.txt")
-    save_as_text(ds_L3, "./data/blocksworld_L3.txt")
+    # Split train/test (1:3 ratio from paper)
+    # L1: first 7 train, rest test
+    # L2: first 88 train, rest test
+    # L3: first 472 train, rest test
+    ds_L1_train, ds_L1_test = ds_L1[:7], ds_L1[7:]
+    ds_L2_train, ds_L2_test = ds_L2[:88], ds_L2[88:]
+    ds_L3_train, ds_L3_test = ds_L3[:472], ds_L3[472:]
 
-    save_as_jsonl(ds_L1, "./data/blocksworld_L1.jsonl")
-    save_as_jsonl(ds_L2, "./data/blocksworld_L2.jsonl")
-    save_as_jsonl(ds_L3, "./data/blocksworld_L3.jsonl")
+    # Combine all training data (as done in paper)
+    ds_train_all = ds_L1_train + ds_L2_train + ds_L3_train
+    ds_test_all = ds_L1_test + ds_L2_test + ds_L3_test
 
-    print("Saved L1/L2/L3 datasets to ./data/ (both .txt and .jsonl formats)")
+    print(
+        f"\nTrain: L1={len(ds_L1_train)}, L2={len(ds_L2_train)}, L3={len(ds_L3_train)}, Total={len(ds_train_all)}"
+    )
+    print(
+        f"Test:  L1={len(ds_L1_test)}, L2={len(ds_L2_test)}, L3={len(ds_L3_test)}, Total={len(ds_test_all)}"
+    )
+
+    print("\nSaving datasets...")
+
+    # Save per-level train/test splits (.jsonl and .txt)
+    save_as_jsonl(ds_L1_train, "./data/blocksworld_L1_train.jsonl")
+    save_as_jsonl(ds_L1_test, "./data/blocksworld_L1_test.jsonl")
+    save_as_text(ds_L1_train, "./data/blocksworld_L1_train.txt")
+    save_as_text(ds_L1_test, "./data/blocksworld_L1_test.txt")
+
+    save_as_jsonl(ds_L2_train, "./data/blocksworld_L2_train.jsonl")
+    save_as_jsonl(ds_L2_test, "./data/blocksworld_L2_test.jsonl")
+    save_as_text(ds_L2_train, "./data/blocksworld_L2_train.txt")
+    save_as_text(ds_L2_test, "./data/blocksworld_L2_test.txt")
+
+    save_as_jsonl(ds_L3_train, "./data/blocksworld_L3_train.jsonl")
+    save_as_jsonl(ds_L3_test, "./data/blocksworld_L3_test.jsonl")
+    save_as_text(ds_L3_train, "./data/blocksworld_L3_train.txt")
+    save_as_text(ds_L3_test, "./data/blocksworld_L3_test.txt")
+
+    # Save combined train/test splits (.jsonl and .txt)
+    save_as_jsonl(ds_train_all, "./data/blocksworld_train.jsonl")
+    save_as_jsonl(ds_test_all, "./data/blocksworld_test.jsonl")
+    save_as_text(ds_train_all, "./data/blocksworld_train.txt")
+    save_as_text(ds_test_all, "./data/blocksworld_test.txt")
+
+    print("\n" + "=" * 60)
+    print("SAVED DATASETS (matching paper Table 1)")
+    print("=" * 60)
+    print("\nCombined (for fine-tuning):")
+    print(f"  blocksworld_train.jsonl     ({len(ds_train_all)} examples)")
+    print(f"  blocksworld_test.jsonl      ({len(ds_test_all)} examples)")
+    print(f"  blocksworld_train.txt       ({len(ds_train_all)} examples)")
+    print(f"  blocksworld_test.txt        ({len(ds_test_all)} examples)")
+    print("\nPer-level splits:")
+    print(f"  blocksworld_L1_train.jsonl  ({len(ds_L1_train)} examples)")
+    print(f"  blocksworld_L1_test.jsonl   ({len(ds_L1_test)} examples)")
+    print(f"  blocksworld_L2_train.jsonl  ({len(ds_L2_train)} examples)")
+    print(f"  blocksworld_L2_test.jsonl   ({len(ds_L2_test)} examples)")
+    print(f"  blocksworld_L3_train.jsonl  ({len(ds_L3_train)} examples)")
+    print(f"  blocksworld_L3_test.jsonl   ({len(ds_L3_test)} examples)")
+    print(f"  (+ corresponding .txt files)")
+    print("=" * 60)

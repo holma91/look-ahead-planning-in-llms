@@ -30,7 +30,9 @@ def generate(prompt: str):
     # Set cache directory to use the persistent volume
     os.environ["HF_HOME"] = "/cache"
 
-    model_id = "meta-llama/Llama-2-7b-hf"
+    model_id = (
+        "meta-llama/Llama-2-7b-chat-hf"  # Instruction-tuned version (same as paper)
+    )
 
     print(f"Loading model {model_id}...")
     tokenizer = AutoTokenizer.from_pretrained(model_id)
