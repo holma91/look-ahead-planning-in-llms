@@ -175,13 +175,45 @@ def identify_chunks(prompt: str, tokenizer) -> dict[str, tuple[int, int]]:
     # Identify chunk boundaries
     if init_start_char >= 0 and goal_start_char >= 0:
         init_token_start = char_pos_to_token_pos(init_start_char)
-        goal_token_start = char_pos_to_token_pos(goal_start_char)
-        chunks["init_state"] = (init_token_start, goal_token_start)
+        # "Init state:\n" is about 5-6 tokens usually.
+        # Let's find the start of the actual state content (the first "<")
+        state_start_char = full_text.find("<", init_start_char)
+        if state_start_char > init_start_char and state_start_char < goal_start_char:
+            init_state_start = char_pos_to_token_pos(state_start_char)
+            chunks["init_token"] = (init_token_start, init_state_start)
+
+            goal_token_start = char_pos_to_token_pos(goal_start_char)
+            chunks["init_state"] = (init_state_start, goal_token_start)
+        else:
+            # Fallback if formatting is weird
+            init_token_start = char_pos_to_token_pos(init_start_char)
+            goal_token_start = char_pos_to_token_pos(goal_start_char)
+            chunks["init_state"] = (init_token_start, goal_token_start)
 
     if goal_start_char >= 0 and plan_start_char >= 0:
         goal_token_start = char_pos_to_token_pos(goal_start_char)
+        # Find start of goal state content
+        state_start_char = full_text.find("<", goal_start_char)
+
+        if state_start_char > goal_start_char and state_start_char < plan_start_char:
+            goal_state_start = char_pos_to_token_pos(state_start_char)
+            chunks["goal_token"] = (goal_token_start, goal_state_start)
+
+            plan_token_start = char_pos_to_token_pos(plan_start_char)
+            chunks["goal_state"] = (goal_state_start, plan_token_start)
+        else:
+            # Fallback
+            goal_token_start = char_pos_to_token_pos(goal_start_char)
+            plan_token_start = char_pos_to_token_pos(plan_start_char)
+            chunks["goal_state"] = (goal_token_start, plan_token_start)
+
+        # "Plan:" token itself
         plan_token_start = char_pos_to_token_pos(plan_start_char)
-        chunks["goal_state"] = (goal_token_start, plan_token_start)
+        # The first step starts at "step 1:"
+        first_step_match = re.search(r"step 1:", full_text)
+        if first_step_match:
+            first_step_start = char_pos_to_token_pos(first_step_match.start())
+            chunks["plan_token"] = (plan_token_start, first_step_start)
 
     # Find all step markers
     step_matches = list(re.finditer(r"step \d+:", full_text))
@@ -431,6 +463,15 @@ def compute_information_flow(run_name: str, examples: list[dict], use_lora: bool
                             # for each chunk, how much flows from the chunk to the last token?
                             # e.g 0.005 could flow from the goal state chunk to the last token
                             for chunk_name, (chunk_start, chunk_end) in chunks.items():
+                                # IMPORTANT: Rename current step's chunk to "action_prompt"
+                                # If we are predicting step 3, the chunk "history_3" (which contains "step 3: ...")
+                                # is actually the action prompt for this prediction.
+                                current_step_history_key = f"history_{step_idx + 1}"
+                                if chunk_name == current_step_history_key:
+                                    display_name = "action_prompt"
+                                else:
+                                    display_name = chunk_name
+
                                 # average flow from last token to this chunk
                                 chunk_flow = flow_from_last[
                                     chunk_start:chunk_end
@@ -440,16 +481,16 @@ def compute_information_flow(run_name: str, examples: list[dict], use_lora: bool
                                 if layer_idx not in accumulated_results[step_key]:
                                     accumulated_results[step_key][layer_idx] = {}
                                 if (
-                                    chunk_name
+                                    display_name
                                     not in accumulated_results[step_key][layer_idx]
                                 ):
                                     accumulated_results[step_key][layer_idx][
-                                        chunk_name
+                                        display_name
                                     ] = 0.0
 
                                 # Accumulate flow scores
                                 accumulated_results[step_key][layer_idx][
-                                    chunk_name
+                                    display_name
                                 ] += float(chunk_flow)
 
             loss = None
