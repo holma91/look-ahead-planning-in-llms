@@ -132,15 +132,70 @@ def check_extraction_event(
     """
     import torch
 
-    assert (
-        len(hidden_state.shape) == 1
-    ), f"Expected 1D hidden state, got shape {hidden_state.shape}"
-
-    # Project to vocabulary
-    logits = torch.matmul(hidden_state, lm_head.T)  # [vocab_size]
+    # ẽ := argmax(E·h_N^l) (equation 6 from the paper)
+    logits = torch.matmul(hidden_state, lm_head.T)
     predicted_token_id = torch.argmax(logits).item()
 
+    # this is the literal "e* = ẽ → extraction event" part from the paper
     return predicted_token_id == expected_token_id
+
+
+class ComponentOutputCapture:
+    """
+    Captures MHSA and MLP outputs from each layer using forward hooks.
+
+    LLaMA-2 layer structure:
+        x = x + self_attn(input_layernorm(x))           # MHSA block
+        x = x + mlp(post_attention_layernorm(x))        # MLP block
+
+    We hook self_attn and mlp to capture their outputs before residual connection.
+    """
+
+    def __init__(self, model, num_layers: int):
+        self.mhsa_outputs = {}  # {layer_idx: tensor}
+        self.mlp_outputs = {}  # {layer_idx: tensor}
+        self.hooks = []
+
+        # Register hooks on all layers
+        for layer_idx in range(num_layers):
+            layer = model.model.layers[layer_idx]
+
+            # Hook MHSA (self_attn module)
+            mhsa_hook = self._make_hook(layer_idx, "mhsa")
+            self.hooks.append(layer.self_attn.register_forward_hook(mhsa_hook))
+
+            # Hook MLP
+            mlp_hook = self._make_hook(layer_idx, "mlp")
+            self.hooks.append(layer.mlp.register_forward_hook(mlp_hook))
+
+    def _make_hook(self, layer_idx: int, component: str):
+        """Create a hook function for a specific layer and component."""
+
+        def hook(module, input, output):
+            # output is a tuple (hidden_states,) for self_attn, just tensor for mlp
+            if isinstance(output, tuple):
+                tensor = output[0]
+            else:
+                tensor = output
+
+            # Store on CPU to save GPU memory
+            if component == "mhsa":
+                self.mhsa_outputs[layer_idx] = tensor.detach().cpu()
+            else:
+                self.mlp_outputs[layer_idx] = tensor.detach().cpu()
+
+        return hook
+
+    def clear(self):
+        """Clear stored outputs (call between examples)."""
+        self.mhsa_outputs.clear()
+        self.mlp_outputs.clear()
+
+    def remove_hooks(self):
+        """Remove all registered hooks."""
+        for hook in self.hooks:
+            hook.remove()
+        self.hooks.clear()
 
 
 @app.function(
@@ -229,9 +284,16 @@ def compute_extraction_rates(run_name: str, examples: list[dict], use_lora: bool
         "steps_with_correct_final_prediction": 0,
     }
 
+    # Register hooks to capture MHSA and MLP outputs
+    print("Registering forward hooks...")
+    component_capture = ComponentOutputCapture(model, num_layers)
+
     print("Starting extraction rate computation...")
 
     for ex_idx, ex in enumerate(examples):
+        # Clear component outputs from previous example
+        component_capture.clear()
+
         # Construct the full prompt with the expected plan (teacher-forcing)
         # This allows us to analyze how each layer processes the correct answer
         # Note: We're analyzing CORRECT predictions only, pre-filtered via filter_correct_predictions.py
@@ -292,20 +354,39 @@ def compute_extraction_rates(run_name: str, examples: list[dict], use_lora: bool
 
             stats["steps_with_correct_final_prediction"] += 1
 
-            # compute extraction rates for each layer
+            # compute extraction rates for each layer and component
             for layer_idx in range(num_layers):
+                # Layer output (full hidden state after both MHSA and MLP)
                 # hidden_states[0] is embeddings, hidden_states[1] is layer 0, etc.
                 h_layer = hidden_states[layer_idx + 1][0, last_token_pos, :]
-
-                # Check if this layer can extract the answer
-                # TODO: Separate MLP and MHSA components
-                is_extraction = check_extraction_event(
+                is_extraction_layer = check_extraction_event(
                     h_layer, lm_head, expected_answer_id
                 )
-                extraction_events["layer"][layer_idx].append(is_extraction)
+                extraction_events["layer"][layer_idx].append(is_extraction_layer)
+
+                # MHSA output (captured by hooks, on CPU)
+                h_mhsa = component_capture.mhsa_outputs[layer_idx][
+                    0, last_token_pos, :
+                ].to(model.device)
+                is_extraction_mhsa = check_extraction_event(
+                    h_mhsa, lm_head, expected_answer_id
+                )
+                extraction_events["mhsa"][layer_idx].append(is_extraction_mhsa)
+
+                # MLP output (captured by hooks, on CPU)
+                h_mlp = component_capture.mlp_outputs[layer_idx][
+                    0, last_token_pos, :
+                ].to(model.device)
+                is_extraction_mlp = check_extraction_event(
+                    h_mlp, lm_head, expected_answer_id
+                )
+                extraction_events["mlp"][layer_idx].append(is_extraction_mlp)
 
         if (ex_idx + 1) % 10 == 0:
             print(f"Processed {ex_idx + 1}/{len(examples)} examples...")
+
+    # Clean up hooks
+    component_capture.remove_hooks()
 
     print(f"\n{'='*60}")
     print("Processing Statistics:")
@@ -372,13 +453,15 @@ def main(
     print(f"Layers: {data['num_layers']}")
     print(f"{'='*60}\n")
 
-    # Print some sample rates
-    print("Sample extraction rates (every 4th layer):")
-    print(f"{'Layer':<8} {'Layer Output':<15}")
-    print("-" * 25)
-    for i in range(0, data["num_layers"], 4):
+    # Print extraction rates for all layers
+    print("Extraction rates by layer:")
+    print(f"{'Layer':<8} {'MHSA':<12} {'MLP':<12} {'Layer Output':<15}")
+    print("-" * 50)
+    for i in range(data["num_layers"]):
+        mhsa_rate = data["results"]["mhsa"][i]
+        mlp_rate = data["results"]["mlp"][i]
         layer_rate = data["results"]["layer"][i]
-        print(f"{i:<8} {layer_rate:.3f}")
+        print(f"{i:<8} {mhsa_rate:.3f}        {mlp_rate:.3f}        {layer_rate:.3f}")
 
     # Save results
     model_name = run_name.replace("axo-", "").replace("/", "_")
@@ -390,6 +473,6 @@ def main(
 
     print(f"\nResults saved to {output_file}")
     print("\nNext steps:")
-    print("1. Implement MLP/MHSA separation using forward hooks")
-    print("2. Generate plots (Figure 3/4 style)")
-    print("3. Run on both LoRA and full models for comparison")
+    print("1. Generate plots (Figure 3/4 style)")
+    print("2. Run on both LoRA and full models for comparison")
+    print("3. Compare MHSA vs MLP extraction rates (expect MHSA > MLP)")
