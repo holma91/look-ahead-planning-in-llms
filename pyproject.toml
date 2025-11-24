@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "accelerate==0.33.0",
+    "baukit",
     "fastapi>=0.121.1",
     "ipykernel>=7.1.0",
     "llama-stack>=0.3.2",
@@ -15,3 +16,6 @@ dependencies = [
     "torch==2.3.0",
     "transformers==4.44.0",
 ]
+
+[tool.uv.sources]
+baukit = { git = "https://github.com/davidbau/baukit" }
