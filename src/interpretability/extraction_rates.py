@@ -61,7 +61,7 @@ def extract_answer_tokens_from_plan(plan_text: str) -> list[str]:
         if not line.startswith("step"):
             continue
 
-        # Extract the last word on the line (the answer token)
+        # extract the last word on the line (which is the answer token)
         tokens = line.split()
         if len(tokens) > 0:
             answers.append(tokens[-1])
@@ -156,29 +156,26 @@ class ComponentOutputCapture:
         self.mlp_outputs = {}  # {layer_idx: tensor}
         self.hooks = []
 
-        # Register hooks on all layers
+        # register hooks on all layers
         for layer_idx in range(num_layers):
             layer = model.model.layers[layer_idx]
 
-            # Hook MHSA (self_attn module)
+            # hook MHSA (self_attn module)
             mhsa_hook = self._make_hook(layer_idx, "mhsa")
             self.hooks.append(layer.self_attn.register_forward_hook(mhsa_hook))
 
-            # Hook MLP
+            # hook MLP
             mlp_hook = self._make_hook(layer_idx, "mlp")
             self.hooks.append(layer.mlp.register_forward_hook(mlp_hook))
 
     def _make_hook(self, layer_idx: int, component: str):
-        """Create a hook function for a specific layer and component."""
-
         def hook(module, input, output):
-            # output is a tuple (hidden_states,) for self_attn, just tensor for mlp
+            # output is a tuple (hidden_states,) for self_attn, just a tensor for mlp
             if isinstance(output, tuple):
                 tensor = output[0]
             else:
                 tensor = output
 
-            # Store on CPU to save GPU memory
             if component == "mhsa":
                 self.mhsa_outputs[layer_idx] = tensor.detach().cpu()
             else:
@@ -187,12 +184,10 @@ class ComponentOutputCapture:
         return hook
 
     def clear(self):
-        """Clear stored outputs (call between examples)."""
         self.mhsa_outputs.clear()
         self.mlp_outputs.clear()
 
     def remove_hooks(self):
-        """Remove all registered hooks."""
         for hook in self.hooks:
             hook.remove()
         self.hooks.clear()

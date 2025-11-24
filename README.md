@@ -64,4 +64,16 @@ uv run modal run -m src.quick_inference_test --run-name axo-2025-11-17-12-42-41-
 
 # Interpretability
 
-Two different sections; Information flow analysis and Probing internal representations. Look at interpretability.md for details.
+Two different sections; Information flow analysis and Probing internal representations. See [interpretability.md](interpretability.md) for details.
+
+## Analysis Tasks
+
+### Information Flow Analysis
+
+- [x] **Extraction rates (Section 5.1)** - Measure how MLP vs MHSA components extract information at the last token. Results show both components contribute equally (~71-72%) in our model, unlike the paper's MHSA-dominated pattern.
+- [ ] **Attention source analysis (Section 5.2)** - Trace where MHSA gets information from (goal states vs history steps).
+
+### Probing Internal Representations
+
+- [ ] **Future decisions probing (Section 6.1)** - Probe whether middle/upper layers encode short-term future decisions using linear and nonlinear probes.
+- [ ] **History step causality (Section 6.2)** - Mask/prevent information flow from different history steps and measure impact on final decisions.
