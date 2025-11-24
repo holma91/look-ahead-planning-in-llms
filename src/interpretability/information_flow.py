@@ -68,40 +68,61 @@ def extract_answer_tokens_from_plan(plan_text: str) -> list[str]:
 
 def find_answer_token_positions(
     input_ids: list[int],
-    expected_answer_ids: list[int],
+    tokenizer,
+    num_steps: int,
 ) -> list[tuple[int, int]]:
     """
-    Find the positions of answer tokens in the input sequence.
+    Find the positions of answer tokens by locating the end of each step line.
+    Answer is always the LAST token on each "step N:" line.
 
     Args:
         input_ids: Token IDs from tokenizer
-        expected_answer_ids: List of answer token IDs to find (one per step)
+        tokenizer: HuggingFace tokenizer
+        num_steps: Number of steps in the plan
 
     Returns:
         List of (answer_pos, last_token_pos) tuples for each step.
     """
+    full_text = tokenizer.decode(input_ids)
     positions = []
-    answer_occurrence_count = {}
 
-    for step_idx, expected_answer_id in enumerate(expected_answer_ids):
-        if expected_answer_id not in answer_occurrence_count:
-            answer_occurrence_count[expected_answer_id] = 0
+    # Find each "step N:" line
+    for step_num in range(1, num_steps + 1):
+        # Find the start and end of this step's line
+        step_pattern = f"step {step_num}:"
+        step_start = full_text.find(step_pattern)
+        assert step_start >= 0, f"Could not find '{step_pattern}' in prompt"
 
-        target_occurrence = answer_occurrence_count[expected_answer_id]
-        answer_occurrence_count[expected_answer_id] += 1
+        # Find where this step's line ends (either next step or end of text)
+        next_step_pattern = f"step {step_num + 1}:"
+        step_end = full_text.find(next_step_pattern)
+        if step_end == -1:
+            step_end = len(full_text)
 
-        answer_positions = [
-            i for i, tid in enumerate(input_ids) if tid == expected_answer_id
-        ]
+        # Map character positions to token positions
+        step_line_end_pos = None
+        for i in range(len(input_ids)):
+            decoded = tokenizer.decode(input_ids[: i + 1])
+            if len(decoded) >= step_end:
+                step_line_end_pos = i
+                break
 
-        assert target_occurrence < len(
-            answer_positions
-        ), f"Answer token {expected_answer_id} occurrence {target_occurrence} not found"
+        assert (
+            step_line_end_pos is not None
+        ), f"Could not find token position for step {step_num} end"
 
-        answer_pos = answer_positions[target_occurrence]
+        # The answer token is right before the step line ends
+        # Go back to find the last non-newline token
+        answer_pos = step_line_end_pos - 1
+        while answer_pos > 0:
+            token_text = tokenizer.decode([input_ids[answer_pos]])
+            if token_text.strip() and token_text not in ["\n", " "]:
+                break
+            answer_pos -= 1
+
         last_token_pos = answer_pos - 1
+        assert last_token_pos >= 0, f"Answer token at position 0 for step {step_num}"
 
-        assert last_token_pos >= 0, f"Answer token at position 0"
         positions.append((answer_pos, last_token_pos))
 
     return positions
@@ -281,8 +302,10 @@ def compute_information_flow(run_name: str, examples: list[dict], use_lora: bool
 
     num_layers = model.config.num_hidden_layers
 
-    # Results structure: {step_idx: {layer_idx: {chunk_name: flow_score}}}
-    results = {}
+    # Results structure: {step_idx: {layer_idx: {chunk_name: accumulated_flow_score}}}
+    # We'll accumulate flows across all examples, then average at the end
+    accumulated_results = {}
+    step_counts = {}  # Track how many examples contributed to each step
 
     stats = {
         "examples_processed": 0,
@@ -305,47 +328,45 @@ def compute_information_flow(run_name: str, examples: list[dict], use_lora: bool
         # Extract answer tokens and positions
         plan_text = ex["output"]
         expected_answers = extract_answer_tokens_from_plan(plan_text)
+        num_steps = len(expected_answers)
+        print(f"Expected answers: {expected_answers}")
+
+        # Get token IDs for each answer (needed for loss computation)
         expected_answer_ids = [
             tokenizer.encode(answer, add_special_tokens=False)[0]
             for answer in expected_answers
         ]
-        positions = find_answer_token_positions(input_ids, expected_answer_ids)
+        print(f"Expected answer IDs: {expected_answer_ids}")
 
-        # Identify chunks
+        # Find positions by locating the end of each step line
+        positions = find_answer_token_positions(input_ids, tokenizer, num_steps)
+        print(f"Positions: {positions}")
         chunks = identify_chunks(prompt, tokenizer)
-
-        # Debug: Print identified chunks
         if ex_idx == 0:
             print(f"\nDEBUG: Identified {len(chunks)} chunks:")
             for chunk_name, (start, end) in chunks.items():
                 print(f"  {chunk_name}: tokens [{start}:{end}]")
+                print(f"  {chunk_name}: text {tokenizer.decode(input_ids[start:end])}")
 
         stats["examples_processed"] += 1
 
         # For each step, compute information flow
         for step_idx, (answer_pos, last_token_pos) in enumerate(positions):
+            # e.g 6, (141, 140) where expected_answer_id = 7933 which is the token for "green"
+            # -> "what is the model attending to at position 140 when predicting green at position 141?"
             stats["steps_analyzed"] += 1
             expected_answer_id = expected_answer_ids[step_idx]
 
-            # Use baukit to trace attention weights during forward pass
-            # This captures them while they're still in the computation graph
+            # we use baukit to trace attention weights during forward pass
+            # baukit.TraceDict intercepts and saves the attention weights at each layer while the forward pass is running
             from baukit import TraceDict
 
-            # Trace all attention layers
             layer_names = [f"model.layers.{i}.self_attn" for i in range(num_layers)]
-
             with TraceDict(model, layer_names) as traces:
-                # Forward pass - baukit captures intermediate values
-                # CRITICAL: Must pass output_attentions=True so LlamaAttention returns attention weights
+                # critical: must pass output_attentions=True so LlamaAttention returns attention weights
                 outputs = model(**inputs, output_attentions=True, return_dict=True)
-
-                # Retain gradients on captured attention weights
-                # Note: We access the attention scores from the traced modules
                 for layer_idx in range(num_layers):
                     layer_name = f"model.layers.{layer_idx}.self_attn"
-                    # Get the attention weights from the trace
-                    # The attention module outputs (attn_output, attn_weights, past_key_value)
-                    # We need attn_weights which is the second element
                     if (
                         hasattr(traces[layer_name], "output")
                         and traces[layer_name].output is not None
@@ -355,74 +376,99 @@ def compute_information_flow(run_name: str, examples: list[dict], use_lora: bool
                         if isinstance(attn_output, tuple) and len(attn_output) >= 2:
                             attn_weights = attn_output[1]
                             if attn_weights is not None:
+                                # attn_weights shape: [batch, heads, seq_len, seq_len]
+                                seq_len = len(input_ids)
+                                assert attn_weights.shape == (
+                                    1,
+                                    32,
+                                    seq_len,
+                                    seq_len,
+                                ), f"Expected shape (1, 32, {seq_len}, {seq_len}), got {attn_weights.shape}"
                                 attn_weights.retain_grad()
 
-            # Compute loss for this specific step
-            logits = outputs.logits[0, last_token_pos, :]
-            loss = F.cross_entropy(
+            logits = outputs.logits[0, last_token_pos, :]  # get logits at e.g pos 140
+            loss = F.cross_entropy(  # how wrong is the model at predicting 7933 (green) at position 141?
                 logits.unsqueeze(0), torch.tensor([expected_answer_id]).to(model.device)
             )
 
-            # Backward pass to get gradients
+            # backward pass to get the gradients
+            # such that, for each layer,attn_weights.grad contains the gradients of the loss with respect to the attention weights
             model.zero_grad()
             loss.backward(retain_graph=True)
 
-            # Compute information flow per layer
             step_key = f"step_{step_idx + 1}"
-            if step_key not in results:
-                results[step_key] = {}
+            if step_key not in accumulated_results:
+                accumulated_results[step_key] = {}
+                step_counts[step_key] = 0
+            step_counts[step_key] += 1
 
+            # compute information flow per layer
             for layer_idx in range(num_layers):
                 layer_name = f"model.layers.{layer_idx}.self_attn"
 
-                # Get attention weights and gradients from traces
                 if layer_name in traces:
                     attn_output = traces[layer_name].output
                     if isinstance(attn_output, tuple) and len(attn_output) >= 2:
-                        attn_weights = attn_output[1]
+                        attn_weights = attn_output[1]  # [batch, heads, seq, seq]
 
                         if attn_weights is not None and attn_weights.grad is not None:
-                            # Remove batch dimension: [batch, heads, seq, seq] -> [heads, seq, seq]
-                            attention = attn_weights[0]
-                            attention_grad = attn_weights.grad[0]
+                            attention = attn_weights[0]  # [heads, seq, seq]
+                            attention_grad = attn_weights.grad[  # ∂L/∂A for this layer
+                                0
+                            ]
 
-                            # Equation 7: I_token,ℓ(i,j) = |∑_hd A_hd,ℓ(j,i) ⊙ ∂L/∂A_hd,ℓ(j,i)|
-                            # Element-wise multiply and sum over heads
-                            flow = torch.abs(
-                                (attention * attention_grad).sum(dim=0)
-                            )  # [seq_len, seq_len]
+                            # Equation 7 from the paper: I_token,ℓ(i,j) = |∑_hd A_hd,ℓ(j,i) ⊙ ∂L/∂A_hd,ℓ(j,i)|
+                            flow = torch.abs((attention * attention_grad).sum(dim=0))
 
                             # Extract flows FROM last_token_pos to all other tokens
                             # flow[i, j] = how much token i attends to token j
                             # We want: how much does last_token_pos attend to each token?
                             flow_from_last = (
                                 flow[last_token_pos, :].detach().cpu().numpy()
-                            )  # [seq_len]
+                            )
 
-                            # Aggregate to chunk level (Equation 8)
-                            chunk_flows = {}
+                            # aggregating to chunk level (Equation 8)
+                            # for each chunk, how much flows from the chunk to the last token?
+                            # e.g 0.005 could flow from the goal state chunk to the last token
                             for chunk_name, (chunk_start, chunk_end) in chunks.items():
-                                # Average flow from last token to this chunk
+                                # average flow from last token to this chunk
                                 chunk_flow = flow_from_last[
                                     chunk_start:chunk_end
                                 ].mean()
-                                chunk_flows[chunk_name] = float(chunk_flow)
 
-                            results[step_key][layer_idx] = chunk_flows
-                        else:
-                            print(
-                                f"Warning: No attention weights or gradients for layer {layer_idx}"
-                            )
-                else:
-                    print(f"Warning: Layer {layer_name} not traced")
+                                # Initialize nested dicts if needed
+                                if layer_idx not in accumulated_results[step_key]:
+                                    accumulated_results[step_key][layer_idx] = {}
+                                if (
+                                    chunk_name
+                                    not in accumulated_results[step_key][layer_idx]
+                                ):
+                                    accumulated_results[step_key][layer_idx][
+                                        chunk_name
+                                    ] = 0.0
 
-            # Clean up for next step
+                                # Accumulate flow scores
+                                accumulated_results[step_key][layer_idx][
+                                    chunk_name
+                                ] += float(chunk_flow)
+
             loss = None
             outputs = None
             torch.cuda.empty_cache()
 
         if (ex_idx + 1) % 5 == 0:
             print(f"Processed {ex_idx + 1}/{len(examples)} examples...")
+
+    # Average the accumulated results across examples
+    print(f"\nAveraging results across {len(examples)} examples...")
+    results = {}
+    for step_key, step_data in accumulated_results.items():
+        results[step_key] = {}
+        count = step_counts[step_key]
+        for layer_idx, layer_data in step_data.items():
+            results[step_key][layer_idx] = {}
+            for chunk_name, accumulated_flow in layer_data.items():
+                results[step_key][layer_idx][chunk_name] = accumulated_flow / count
 
     print(f"\n{'='*60}")
     print("Processing Statistics:")
@@ -443,7 +489,7 @@ def compute_information_flow(run_name: str, examples: list[dict], use_lora: bool
 def main(
     run_name: str = "axo-2025-11-17-12-42-41-3911",
     data_file: str = "data/blocksworld_L3_correct_full.jsonl",
-    n_samples: int = 10,  # Start small for testing
+    n_samples: int = 0,  # 0 = all examples (default, like the paper)
     lora: bool = False,
 ):
     """
@@ -473,11 +519,17 @@ def main(
     print(f"Layers: {data['num_layers']}")
     print(f"{'='*60}\n")
 
-    # Print sample results
-    print("Sample results (Step 1, Layer 16):")
-    if "step_1" in data["results"] and 16 in data["results"]["step_1"]:
-        for chunk_name, flow_score in data["results"]["step_1"][16].items():
-            print(f"  {chunk_name}: {flow_score:.4f}")
+    # Print sample results for multiple steps
+    sample_steps = ["step_1", "step_2", "step_3", "step_4", "step_5"]
+    sample_layer = 16
+
+    print(f"Sample results at Layer {sample_layer}:\n")
+    for step in sample_steps:
+        if step in data["results"] and sample_layer in data["results"][step]:
+            print(f"{step.replace('_', ' ').title()}:")
+            for chunk_name, flow_score in data["results"][step][sample_layer].items():
+                print(f"  {chunk_name}: {flow_score:.4f}")
+            print()
 
     # Save results
     model_name = run_name.replace("axo-", "").replace("/", "_")
