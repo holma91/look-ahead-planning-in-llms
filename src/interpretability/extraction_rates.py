@@ -44,22 +44,50 @@ def extract_answer_tokens_from_plan(plan_text: str) -> list[str]:
     ]
 
 
+def char_pos_to_token_pos(input_ids: list[int], tokenizer, target_char_pos: int) -> int:
+    """Find which token index contains a given character position."""
+    for i in range(len(input_ids)):
+        decoded_so_far = tokenizer.decode(input_ids[: i + 1])
+        if len(decoded_so_far) >= target_char_pos:
+            return i
+    return len(input_ids) - 1
+
+
 def find_answer_token_positions(
-    input_ids: list[int], expected_answer_ids: list[int]
+    input_ids: list[int],
+    tokenizer,
+    expected_answer_ids: list[int],
 ) -> list[tuple[int, int]]:
-    """Find positions of answer tokens in the input sequence."""
+    """
+    Find positions of answer tokens by scanning the plan section sequentially.
+
+    We start from the first occurrence of "step 1:" and, for each expected answer
+    token ID, locate the next matching token in the plan. This avoids matching
+    colors that appear earlier in the prompt (e.g., in the init/goal states).
+    """
+    full_text = tokenizer.decode(input_ids)
+    first_step_char = full_text.find("step 1:")
+    assert first_step_char >= 0, "Could not find 'step 1:' in prompt"
+
+    search_idx = char_pos_to_token_pos(input_ids, tokenizer, first_step_char)
     positions = []
-    occurrence_count = {}
 
-    for expected_id in expected_answer_ids:
-        target_occurrence = occurrence_count.get(expected_id, 0)
-        occurrence_count[expected_id] = target_occurrence + 1
+    for step_idx, expected_id in enumerate(expected_answer_ids):
+        found_pos = None
+        for idx in range(search_idx, len(input_ids)):
+            if input_ids[idx] == expected_id:
+                found_pos = idx
+                search_idx = idx + 1
+                break
+        if found_pos is None:
+            raise ValueError(
+                f"Could not find token ID {expected_id} for step {step_idx + 1}"
+            )
 
-        answer_positions = [i for i, tid in enumerate(input_ids) if tid == expected_id]
-        assert target_occurrence < len(answer_positions)
-
-        answer_pos = answer_positions[target_occurrence]
-        positions.append((answer_pos, answer_pos - 1))
+        answer_pos = found_pos
+        last_token_pos = answer_pos - 1
+        assert last_token_pos >= 0, "Answer token cannot be at position 0"
+        positions.append((answer_pos, last_token_pos))
 
     return positions
 
@@ -156,8 +184,11 @@ def compute_extraction_rates(run_name: str, examples: list[dict], use_lora: bool
     lm_head = model.lm_head.weight
     print(f"Model loaded! {len(examples)} examples, {num_layers} layers\n")
 
-    extraction_events = {
-        comp: [[] for _ in range(num_layers)] for comp in ["mlp", "mhsa", "layer"]
+    # Track extraction events per layer AND per step (for variance calculation)
+    # Structure: {component: {step_idx: [[] for each layer]}}
+    extraction_events_by_step = {
+        comp: {step: [[] for _ in range(num_layers)] for step in range(6)}
+        for comp in ["mlp", "mhsa", "layer"]
     }
     stats = {
         "examples_processed": 0,
@@ -185,35 +216,62 @@ def compute_extraction_rates(run_name: str, examples: list[dict], use_lora: bool
             tokenizer.encode(ans, add_special_tokens=False)[0]
             for ans in expected_answers
         ]
-        positions = find_answer_token_positions(input_ids, expected_answer_ids)
+        positions = find_answer_token_positions(
+            input_ids, tokenizer, expected_answer_ids
+        )
         stats["examples_processed"] += 1
 
-        for step_idx, (_, last_token_pos) in enumerate(positions):
+        # Debug logging for first 2 examples
+        if ex_idx < 2:
+            print(f"\n{'='*60}")
+            print(f"Example {ex_idx}: {len(input_ids)} tokens")
+            print(f"Expected answers: {expected_answers}")
+            print(f"Expected answer IDs: {expected_answer_ids}")
+            print(f"Positions (answer_pos, last_token_pos): {positions}")
+            print(f"Output text:\n{ex['output']}")
+
+        for step_idx, (answer_pos, last_token_pos) in enumerate(positions):
             stats["steps_analyzed"] += 1
             expected_id = expected_answer_ids[step_idx]
+            predicted_id = torch.argmax(logits[0, last_token_pos, :]).item()
 
-            if torch.argmax(logits[0, last_token_pos, :]).item() != expected_id:
+            # Debug logging for first 2 examples
+            if ex_idx < 2:
+                expected_token = tokenizer.decode([expected_id])
+                predicted_token = tokenizer.decode([predicted_id])
+                context_tokens = tokenizer.decode(
+                    input_ids[max(0, last_token_pos - 5) : last_token_pos + 1]
+                )
+                print(
+                    f"  Step {step_idx+1}: last_token_pos={last_token_pos}, answer_pos={answer_pos}"
+                )
+                print(f"    Context: '...{context_tokens}'")
+                print(f"    Expected: '{expected_token}' (id={expected_id})")
+                print(f"    Predicted: '{predicted_token}' (id={predicted_id})")
+                print(f"    Correct: {predicted_id == expected_id}")
+
+            if predicted_id != expected_id:
                 continue
 
             stats["steps_with_correct_final_prediction"] += 1
 
             for layer_idx in range(num_layers):
                 h_layer = hidden_states[layer_idx + 1][0, last_token_pos, :]
-                extraction_events["layer"][layer_idx].append(
+                extraction_events_by_step["layer"][step_idx][layer_idx].append(
                     check_extraction_event(h_layer, lm_head, expected_id)
                 )
 
                 h_mhsa = component_capture.mhsa_outputs[layer_idx][
                     0, last_token_pos, :
                 ].to(model.device)
-                extraction_events["mhsa"][layer_idx].append(
+                extraction_events_by_step["mhsa"][step_idx][layer_idx].append(
                     check_extraction_event(h_mhsa, lm_head, expected_id)
                 )
 
                 h_mlp = component_capture.mlp_outputs[layer_idx][
                     0, last_token_pos, :
                 ].to(model.device)
-                extraction_events["mlp"][layer_idx].append(
+                extraction_events_by_step["mlp"][step_idx][layer_idx].append(
                     check_extraction_event(h_mlp, lm_head, expected_id)
                 )
 
@@ -224,16 +282,32 @@ def compute_extraction_rates(run_name: str, examples: list[dict], use_lora: bool
 
     print(f"\nStats: {stats}")
 
-    results = {
-        comp: [
-            sum(events) / len(events) if events else 0.0
-            for events in extraction_events[comp]
-        ]
-        for comp in ["mlp", "mhsa", "layer"]
-    }
+    # Compute per-step extraction rates for each layer
+    # Structure: {component: {step_idx: [rate_layer_0, rate_layer_1, ...]}}
+    per_step_rates = {}
+    for comp in ["mlp", "mhsa", "layer"]:
+        per_step_rates[comp] = {}
+        for step_idx in range(6):
+            per_step_rates[comp][step_idx] = [
+                sum(events) / len(events) if events else 0.0
+                for events in extraction_events_by_step[comp][step_idx]
+            ]
+
+    # Compute mean and std across steps for each layer
+    import numpy as np
+
+    results = {}
+    results_std = {}
+    for comp in ["mlp", "mhsa", "layer"]:
+        # Stack per-step rates: shape (6 steps, num_layers)
+        step_rates_array = np.array([per_step_rates[comp][step] for step in range(6)])
+        results[comp] = step_rates_array.mean(axis=0).tolist()
+        results_std[comp] = step_rates_array.std(axis=0).tolist()
 
     return {
         "results": results,
+        "results_std": results_std,
+        "per_step_rates": per_step_rates,
         "num_layers": num_layers,
         "num_examples": len(examples),
         "stats": stats,

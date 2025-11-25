@@ -71,7 +71,7 @@ Two different sections; Information flow analysis and Probing internal represent
 ### Information Flow Analysis
 
 - [x] **Extraction rates (Section 5.1)** - Measure how MLP vs MHSA components extract information at the last token. Results show both components contribute equally (~71-72%) in our model, unlike the paper's MHSA-dominated pattern.
-- [ ] **Attention source analysis (Section 5.2)** - Trace where MHSA gets information from (goal states vs history steps).
+- [x] **Attention source analysis (Section 5.2)** - Trace where MHSA gets information from (goal states vs history steps).
 
 ### Probing Internal Representations
 
